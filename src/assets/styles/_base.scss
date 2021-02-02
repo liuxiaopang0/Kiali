@@ -1,0 +1,148 @@
+//基础样式
+*, :after, :before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  height: 100%;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $text-color;
+  background-color: $body-bg;
+  height: 100%;
+  margin: 0;
+}
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+ul,ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+a {
+  color: #333;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: #333;
+    text-decoration: none;
+  }
+
+  &:focus {
+    @include tab-focus;
+  }
+}
+
+figure {
+  margin: 0;
+}
+
+img {
+  vertical-align: middle;
+}
+
+[role="button"] {
+  cursor: pointer;
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+.invisible {
+  visibility: hidden;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.affix {
+  position: fixed;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+.pd-row {
+  padding-left: u(0.15rem);
+  padding-right: u(0.15rem);
+}
+.empty {
+  display: inline-block;
+  width: 1px;
+  height: 1px;
+  line-height: 1px;
+  font-size: 1px;
+}
+hr {
+  border:none;
+  margin: 0 0 u(0.22rem) 0;
+  border-top: 1px solid #eeeeee;
+}
+
+.el-menu {
+  border: none;
+}
+
+
+/*拖动条样式*/
+::-webkit-scrollbar {
+width: 10px;
+height: 8px;
+background-color: #e1e5ea
+}
+
+::-webkit-scrollbar-thumb {
+background-color: #c3cad4;
+border-radius: 10px;
+border: 2px solid #e1e5ea;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background-color: #aab1bc;
+}
+
+::-webkit-scrollbar-thumb:active {
+border: 0;
+border-radius: 0;
+background-color: #AAAAAA
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+background-color: #666666
+}

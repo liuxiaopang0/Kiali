@@ -1,0 +1,14 @@
+.main {
+  .viewFramework-product-body {
+    position: inherit;
+    & > div {
+      padding: 0 !important;
+      .console-title {
+        display: none;
+      }
+      .console-table-wapper {
+        padding: 0 !important;
+      }
+    }
+  }
+}

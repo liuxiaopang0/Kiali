@@ -1,0 +1,86 @@
+.sugon-menu{
+    height: 100%;
+    border-right: 1px solid rgba(0,0,0,.1);
+    .sugon-menu-li{
+        padding: 0 8px 0 36px;
+        height: 40px;
+        line-height: 40px;
+        position: relative;
+        border-radius: 2px;
+        color: #666;
+        transition: all .3s ease;
+        cursor: pointer;
+        min-width: 131px;
+        &:hover {
+            background: rgba($color: #000000, $alpha: 0.04);
+            color: #000;
+        }
+        .sugon-menu-icon{
+            position: absolute;
+            font-size: 14px;
+            left: 16px;
+            top: 50%;
+            transform: translate(-50%,-50%)
+        }
+        .sugon-menu-text {
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .sugon-menu-phone{
+            position: absolute;
+            font-size: 12px;
+            top: 15px;
+            right: 8px;
+            transition: all 0.2s;
+            &.open-box{
+                transform: rotate(180deg)
+            }
+        }
+    }
+    .sugon-menu-box{
+        position: relative;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.2s;
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 16px;
+            width: 1px;
+            background: #EEE;
+        }
+        .sugon-menu-child-li{
+            font-weight: normal;
+            &:hover {
+                background: rgba($color: #000000, $alpha: 0.03);
+                color: #000;
+            }
+            .sugon-menu-text {
+                font-weight: normal;
+                font-size: 12px;
+            } 
+        }
+        .sugon-menu-line{
+            position: absolute;
+            left: 16px;
+            transform: translate(-1px,50%);
+            display: block;
+            height: 60%;
+            width: 3px;
+            background: #1BB0FF
+            ;
+            transition: all 0.2s;
+        }
+    }
+    .active-item{
+        // color: #2680eb;
+        color: #1BB0FF !important
+        ;
+    }
+    .active-group{
+        color: #000;
+    }
+}

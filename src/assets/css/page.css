@@ -1,0 +1,14 @@
+
+.table_style{
+    padding: 30px 16px;
+}
+.alert-content{
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+}
+.alert-content i{
+    color: orange;
+    font-size: 22px;
+    margin-right: 12px;
+}

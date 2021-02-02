@@ -1,0 +1,137 @@
+.navbar {
+    background: $navbarBgColor;
+    height: $navbarHeight;
+    box-shadow: 0 2px 2px rgba($color: #000000, $alpha: 0.16);
+    display: flex;
+    .navbar-header {
+        position: relative;
+        // width: $sidebarWidth;
+        overflow:hidden;
+        .navbar-brand {
+            padding: 4px 8px;
+            // display: block;
+            img {
+                height: 32px;
+            }
+        }
+    }
+    .navbar-collapse {
+        flex: 1;
+        .navbar-left {
+            float: left;
+            padding: 8px;
+            li {
+                float: left;
+                color: rgba($color: #ffffff, $alpha: 0.7);
+                padding: 5px 12px;
+                line-height: calc(#{$navbarHeight} - 26px);
+                font-size: 13px;
+                min-width: 60px;
+                text-align: center;
+                margin-right: 8px;
+                border-radius: 2px;
+                transition: all .3s ease;
+                cursor: pointer;
+                &.active {
+                    color: rgba($color: #ffffff, $alpha: 0.7);
+                    &:hover {
+                        background: rgba($color: #ffffff, $alpha: 0.1);
+                    }
+                }
+                &:hover {
+                    background: rgba($color: #ffffff, $alpha: 0.1);
+                    color: #FFF;
+                }
+                .product-menu-button {
+                    margin: 0 -12px;
+                    padding: 0 12px;
+                }
+            }
+        }
+        .navbar-right {
+            margin: 0;
+            float: right;
+            li {
+                float: left;
+                color: rgba($color: #ffffff, $alpha: 0.7);
+                line-height: $navbarHeight;
+                font-size: 12px;
+                padding: 0 12px;
+                margin-left: 8px;
+                transition: all .3s ease;
+                cursor: pointer;
+                &:hover {
+                    background: rgba($color: #ffffff, $alpha: 0.1);
+                    color: #FFF;
+                }
+                .user-menu {
+                    margin: 0 -12px;
+                    padding: 7px 12px;
+                    height: 28px;
+                    dt {
+                        float: left;
+                        line-height: 34px;
+                        img.user-avatar {
+                            height: 28px;
+                            width: 28px;
+                            border-radius: 14px;
+                        }
+                    }
+                    dd {
+                        margin: 7px 0 0 36px;
+                        padding: 0 16px 0 0;
+                        position: relative;
+                        h3 {
+                            font-size: 12px;
+                            margin: 0;
+                            line-height: 18px;
+                        }
+                        p {
+                            font-size: 12px;
+                            margin: 0;
+                            line-height: 16px;
+                        }
+                        i {
+                            position: absolute;
+                            right: -5px;
+                            top: 4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.product-menu {
+    li {
+        font-size: 12px;
+        line-height: 28px;
+        margin-bottom: 8px;
+        padding: 0 8px;
+        border-radius: 2px;
+        transition: all .3s ease;
+        cursor: pointer;
+        i {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        a {
+            display: inline-block;
+            vertical-align: middle;
+            color: white;
+        }
+        &:last-child {
+            margin: 0;
+        }
+        &:hover {
+            background: #4f5261;
+        }
+        &.product-item-active {
+            background: rgb(236, 245, 255);
+            color: #2680EB;
+            a {
+                color: #2680EB;
+            }
+        }
+    }
+}

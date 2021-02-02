@@ -1,0 +1,64 @@
+.container-box{
+  padding: 12px;
+  height: 100%;
+  background: rgb(240,242,245);
+  .container-box-title {
+    display: flex;
+    align-items: center;
+    padding-bottom: 12px;
+    font-size:16px;
+    justify-content: space-between
+  }
+  .shu{
+    display: inline-block;
+    height: 20px;
+    width: 3px;
+    background: #2d78f4;
+  }
+  .container-box-content{
+    padding: 20px;
+    background: #FFF;
+    min-height: calc(100% - 45px);
+    // display: table;
+    // height: 100%;
+  }
+}
+
+// 导入浮层
+.upload-status-box {
+  position: fixed;
+  top: u(0.58rem);
+  right: u(0.24rem);
+  width: u(4rem);
+  padding: u(0.15rem) u(0.2rem);
+  border-radius: 8px;
+  background: #FFF;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #CCC;
+  z-index: 99999;
+  h2 {
+      font-size: u(0.13rem);
+      margin: 0;
+      i {
+          font-weight: normal;
+          margin-right: u(0.05rem);
+      }
+  }
+  p {
+      font-size: u(0.12rem);
+      color: #999;
+      margin: 0;
+  }
+  .el-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: #666;
+      &:hover {
+          color: #0084fc;
+      }
+      i {
+          font-size: u(0.16rem);
+      }
+  }
+}
