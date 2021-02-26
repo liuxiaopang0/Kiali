@@ -1,33 +1,30 @@
 <template>
   <div class="add-group">
-    <el-dialog :title="status?'新建网关':'修改网关'" :visible.sync="dialogFormVisible" :close-on-click-modal="false" :close-on-press-escape="false" :append-to-body="true" :before-close="handleClose" width="800px">
+    <el-dialog :title="status?'新建网关':'修改网关'" :visible.sync="dialogFormVisible" :close-on-click-modal="false" :close-on-press-escape="false" :append-to-body="true" :before-close="handleClose" width="600px">
       <el-form :model="form" label-width="150px" :rules="rules" class="demo-ruleForm" action="" onsubmit="return false;" ref="form">
         <el-form-item label="网关名称：" prop='name'>
           <el-col :span="24">
             <el-input v-model="form.name" placeholder="必填（3~64个字符）" :disabled="!status"></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item label="服务网络出口：" prop='description'>
+        <el-form-item label="服务网格出口：" prop='service_grid_exit'>
           <el-col :span="24">
-            <el-input v-model="form.description" placeholder=""></el-input>
+            <el-select v-model="form.service_grid_exit" placeholder="请选择服务网格出口" style="width:100%">
+              <el-option v-for="(item,index) in serviceGridExitItems" :label="item" :value="item" :key="index"></el-option>
+            </el-select>
           </el-col>
         </el-form-item>
-        <el-form-item label="解析域名：" prop='description'>
-          <span slot="label" style="position:relative;">
-            解析服务域名：
-            <el-tooltip class="item" effect="dark" placement="top">
-              <div slot="content">解析服务域名</div>
-              <i class="el-icon-question"></i>
-            </el-tooltip>
-          </span>
+        <div class="row-layout" v-for="(data,index) of form.hosts" :key="index">
           <el-col :span="24">
-            <el-input v-model="form.description" placeholder=""></el-input>
-          </el-col>
-        </el-form-item>
-        <div class="row-layout" v-for="(data,index) of form.nodes" :key="index">
-          <el-col :span="24">
-            <el-form-item style="width:100%" label="服务域名" :prop="'nodes.' + index + '.node_name'" :rules="{ required: true, message: '请输入服务域名', trigger: 'blur' }">
-              <el-input v-model="data.node_name" placeholder=""></el-input>
+            <el-form-item style="width:100%" :prop="'hosts.' + index + '.host_name'" :rules="{ required: true, message: '请输入服务域名', trigger: 'blur' }">
+              <span slot="label" style="position:relative;">
+                解析服务域名：
+                <el-tooltip class="item" effect="dark" placement="top">
+                  <div slot="content">解析服务域名</div>
+                  <i class="el-icon-question"></i>
+                </el-tooltip>
+              </span>
+              <el-input v-model="data.host_name" placeholder=""></el-input>
             </el-form-item>
           </el-col>
           <el-form-item label-width="10px" style="margin-left:20px">
@@ -56,30 +53,17 @@
 </template>
 
 <script>
-import * as serviceGovernance_http from '@/http/serviceGovernance-http'
+import * as gatewayHttp from '@/http/gateway-http'
 
 export default {
-  name: 'AddServiceGovernance',
+  name: 'AddGateway',
   data() {
     const validateName = (rule, value, callback) => {
       if (this.status) {
         if (!(/^[a-z][a-z0-9-]{1,62}[a-z0-9]$/.exec(value))) {
           callback(new Error('名称只支持小写字母、数字、中划线，以小写字母开头'))
         } else {
-          serviceGovernance_http.check_name(this.form.name, this.$store.state.namespace, this.$store.state.cluster_name).then(res => {
-            if (res.status_code === 1) {
-              if (!res.content) {
-                callback(new Error('应用名称重复，请重新输入'))
-              } else {
-                callback()
-              }
-            } else {
-              this.$message({
-                message: res.status_mes,
-                type: 'error'
-              })
-            }
-          })
+          callback()
         }
       } else {
         callback()
@@ -89,14 +73,18 @@ export default {
       dynamicTags: [],
       inputVisible: false,
       inputValue: '',
+      serviceGridExitItems: [], // 服务网格出口数据
       form: {
-        nodes: [],
         name: '',
         description: '',
         cluster_name: '',
         namespace: '',
         app_type: 1,
-        auto_start_up: true
+        auto_start_up: true,
+        hosts: [{ host_name: '' }],
+        service_grid_exit: '',
+        status: 0,
+        uuid: ''
       },
       dialogFormVisible: false,
       loading: false,
@@ -109,38 +97,19 @@ export default {
         description: [
           { min: 0, max: 255, message: '描述最长为255个字符', trigger: 'blur' }
         ],
-        cluster_name: [
-          { required: true, message: '请选择版本', trigger: 'change' }
-        ],
-        namespace: [
-          { required: true, message: '请选择应用分区', trigger: 'change' }
-        ],
-        app_type: [
-          { required: true, message: '请选择应用类型', trigger: 'change' }
+        service_grid_exit: [
+          { required: true, message: '请选择服务网格出口', trigger: 'change' }
         ]
       },
-      serverVersion: [],
-      namespaceItems: [],
-      applicationTypeItems: [
-        {
-          label: '无状态',
-          value: 1
-        },
-        {
-          label: '有状态',
-          value: 0
-        }
-      ],
-      uuid: '',
       status: ''
     }
   },
   methods: {
     add_node_form() {
-      this.form.nodes.push({ node_name: '' })
+      this.form.hosts.push({ host_name: '' })
     },
     delete_form(index) {
-      this.form.nodes.splice(index, 1)
+      this.form.hosts.splice(index, 1)
     },
     taghandleClose(tag) {
       this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1)
@@ -162,27 +131,36 @@ export default {
       this.inputValue = ''
     },
     open_dialog(status, row_data) {
+      this.getServiceGridExitItems()
       this.status = status
       if (!status) {
         this.form.name = row_data.name
         this.form.description = row_data.description
-        this.form.app_type = row_data.app_type === '0' ? 0 : 1
-        this.form.auto_start_up = row_data.auto_start_up === 0
-        this.uuid = row_data.uuid
-        if (row_data.label) {
-          this.dynamicTags.push(row_data.label)
-        } else {
-          this.dynamicTag = []
-        }
-
-        if (this.dynamicTags.length) {
-          this.inputVisible = false
-        } else {
-          this.inputVisible = false
-        }
+        this.form.cluster_name = row_data.cluster_name
+        this.form.namespace = row_data.namespace
+        this.form.app_type = row_data.app_type
+        this.form.auto_start_up = row_data.auto_start_up
+        this.form.hosts = this.arrayConversion(row_data.hosts)
+        this.form.service_grid_exit = row_data.service_grid_exit
+        this.form.status = row_data.status
+        this.form.uuid = row_data.uuid
       }
+      console.log(this.form.hosts)
       this.dialogFormVisible = true
       this.loading = false
+    },
+    getServiceGridExitItems() {
+      gatewayHttp.get_service_grid_exit(this.$store.state.information.cluster_name).then(res => {
+        if (res.status_code === 1) {
+          this.serviceGridExitItems = res.content ? res.content : []
+        } else {
+          this.serviceGridExitItems = []
+          this.$message({
+            message: res.status_mes,
+            type: 'error'
+          })
+        }
+      })
     },
     handleClose() {
       this.dynamicTags = []
@@ -194,70 +172,68 @@ export default {
         cluster_name: '',
         namespace: '',
         app_type: 1,
-        auto_start_up: true
+        auto_start_up: true,
+        hosts: [{ host_name: '' }],
+        service_grid_exit: '',
+        status: 0,
+        uuid: ''
       }
       this.$nextTick(_ => {
         this.$refs.form.clearValidate()
       })
       this.dialogFormVisible = false
     },
+    arrayConversion(array) {
+      var res = []
+      if (array) {
+        array.forEach((t) => {
+          res.push({ 'host_name': t })
+        })
+      }
+      return res
+    },
+    getArrayProps(array, key = 'host_name') {
+      var res = []
+      if (array) {
+        array.forEach((t) => {
+          res.push(t[key])
+        })
+      }
+      return res
+    },
     handleSure() {
       this.$refs['form'].validate(valid => {
         if (valid) {
           this.loading = true
-          if (this.status) {
-            const data =
+          const data =
               {
-                app_type: this.form.app_type,
-                auto_start_up: this.form.auto_start_up ? 0 : 1,
-                cluster_name: this.$store.state.cluster_name,
+                cluster_name: this.$store.state.information.cluster_name,
                 description: this.form.description,
-                namespace: this.$store.state.namespace,
                 name: this.form.name,
-                label: this.dynamicTags.toString()
+                namespace: this.$store.state.information.namespace,
+                hosts: this.getArrayProps(this.form.hosts),
+                service_grid_exit: this.form.service_grid_exit
               }
-            serviceGovernance_http.add_app(data).then(res => {
-              if (res.status_code === 1) {
-                this.$message({
-                  message: res.status_mes,
-                  type: 'success'
-                })
-                this.handleClose()
-                this.$emit('ok')
-              } else {
-                this.$message({
-                  message: res.status_mes,
-                  type: 'error'
-                })
-                this.loading = false
-              }
-            })
-          } else {
-            const data = {
-              app_type: this.form.app_type,
-              auto_start_up: this.form.auto_start_up ? 0 : 1,
-              description: this.form.description,
-              name: this.form.name,
-              uuid: this.uuid,
-              label: this.dynamicTags.toString()
-            }
-            serviceGovernance_http.put_app(data).then(res => {
-              if (res.status_code === 1) {
-                this.$message({
-                  message: res.status_mes,
-                  type: 'success'
-                })
-                this.handleClose()
-                this.$emit('ok')
-              } else {
-                this.$message({
-                  message: res.status_mes,
-                  type: 'error'
-                })
-                this.loading = false
-              }
-            })
+          if (!this.status) {
+            data.status = this.form.status
+            data.uuid = this.form.uuid
           }
+          gatewayHttp[this.status ? 'post_gateway' : 'put_gateway'](data).then(res => {
+            if (res.status_code === 1) {
+              this.$message({
+                message: res.status_mes,
+                type: 'success'
+              })
+              this.handleClose()
+              this.$emit('ok')
+            } else {
+              this.$message({
+                message: res.status_mes,
+                type: 'error'
+              })
+              this.loading = false
+            }
+          })
         }
       })
     }

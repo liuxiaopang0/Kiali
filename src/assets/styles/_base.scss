@@ -4,10 +4,16 @@
   box-sizing: border-box;
 }
 
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 html {
   font-size: 100px;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   height: 100%;
+  box-sizing: border-box;
 }
 
 body {

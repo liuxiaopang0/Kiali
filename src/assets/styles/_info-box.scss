@@ -1,0 +1,172 @@
+.info-box {
+  position: relative;
+  padding-left: 150px;
+  border-top: 1px solid #ECECEE;
+  margin-bottom: 16px;
+  min-height: 44px;
+  &:first-child {
+      border: none;
+  }
+  .info-box-title {
+      position: absolute;
+      left: 0;
+      top: 12px;
+      h2 {
+          margin: 0;
+          font-size: 14px;
+          font-weight: normal;
+      }
+  }
+  .info-box-con {
+      dl {
+          margin: 0;
+          font-size: 12px;
+          border-top: 1px solid #F8F9FA;
+          min-height: 44px;
+          padding: 12px 0;
+          line-height: 20px;
+          &:first-child {
+              border: none;
+          }
+          dt {
+              float: left;
+              color: #999;
+          }
+          dd {
+              margin-left: 150px;
+              .loading {
+                  color: #666;
+                  &::before {
+                      content: '\e801';
+                      font-family: iconfont;
+                      display: inline-block;
+                      font-size: 12px;
+                      animation: fa-spin 1.2s infinite steps(12);
+                  }
+              }
+              @keyframes fa-spin {
+                  0% {
+                      -webkit-transform: rotate(0deg);
+                      transform: rotate(0deg);
+                  }
+                  100% {
+                      -webkit-transform: rotate(359deg);
+                      transform: rotate(359deg);
+                  }
+              }
+          }
+      }
+  }
+}
+.numa-info-box {
+    margin-bottom: u(0.2rem);
+    .info-box-title {
+        position: relative;
+        border-bottom: 1px solid #E4E7ED;
+        padding: u(0.06rem) 0;
+        h2 {
+            font-size: u(0.13rem);
+            margin: 0;
+            line-height: u(0.23rem);
+            color: #606266;
+            font-weight: normal;
+        }
+        a {
+            display: block;
+            position: absolute;
+            top: u(0.06rem);
+            right: 0;
+            line-height: u(0.23rem);
+            color: $blue;
+        }
+    }
+    .info-box-con {
+        padding: u(0.2rem) 0;
+        dl {
+            @include clearfix;
+            margin: 0;
+            dt {
+                float: left;
+                width: u(0.8rem);
+                font-weight: bold;
+                text-align: right;
+                color: #303133;
+                font-size: u(0.12rem);
+                line-height: u(0.2rem);
+                padding: u(0.06rem) 0;
+            }
+            dd {
+                margin-left: u(1rem);
+                border-radius: u(0.02rem);
+                color: #303133;
+                word-break: break-all;
+                padding: u(0.06rem) 0;
+                vertical-align: middle;
+                font-size: u(0.12rem);
+                line-height: u(0.2rem);
+                min-height: u(0.32rem);
+                &.progress-flex {
+                    display: flex;
+                }
+                .progress-flex-info {
+                    padding-right: u(0.2rem);
+                    display: block;
+                    min-width: u(0.9rem);
+                }
+                p {
+                    margin: 0;
+                }
+                i {
+                    font-size: u(0.12rem);
+                }
+                .resource-used-info-r {
+                    flex: 1;
+                    position: relative;
+                    padding: 0;
+                    .resource-used-info-text {
+                        position: absolute;
+                        display: none;
+                        top: -1px;
+                        left: u(0.05rem);
+                        right: u(0.59rem);
+                        font-size: u(0.12rem);
+                        z-index: 9;
+                        text-align: right;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
+                    &:hover {
+                        .resource-used-info-text {
+                            display: block;
+                        }
+                    }
+                    p {
+                        margin: 0;
+                        font-size: u(0.12rem);
+                        em {
+                            display: block;
+                            font-size: u(0.12rem);
+                            font-style: normal;
+                        }
+                        span {
+                            color: #606266;
+                        }
+                    }
+                    .el-progress {
+                        margin-top: u(0.03rem);
+                        .el-progress-bar__outer {
+                            border-radius: 2px;
+                            .el-progress-bar__inner {
+                                border-radius: 2px;
+                            }
+                        }
+                        .el-progress__text {
+                            font-size: u(0.12rem) !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

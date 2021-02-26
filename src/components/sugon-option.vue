@@ -102,7 +102,7 @@ export default {
     overflow: hidden;
 }
 .label-style{
-    width: 40%;
+    width: 30%;
 }
 .liStyle{
     flex: 1;

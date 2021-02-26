@@ -3,6 +3,9 @@
         <div class="form-box-title-2"  v-if="type == 'row' && !noLabel" :style="labelStyle">
             <p>{{title}}</p>
         </div>
+        <div class="form-box-title" :style="labelStyle" v-else-if="type == 'title' && !noLabel">
+            <slot name="title"></slot>
+        </div>
         <div class="form-box-title" :style="labelStyle" v-else-if="!type && !noLabel">
             <p>{{title}}</p>
         </div>

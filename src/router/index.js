@@ -43,9 +43,19 @@ const router = new Router({
           component: resolve => require(['@/page/routingRules/index'], resolve)
         },
         {
+          path: '/routingRulesDetail/:id/:name',
+          name: 'RoutingRulesDetail',
+          component: resolve => require(['@/page/routingRules/handle/routingRulesDetail'], resolve)
+        },
+        {
+          path: '/modifyRoutingRules/:id/:name',
+          name: 'ModifyRoutingRules',
+          component: resolve => require(['@/page/routingRules/handle/modify_routingRules'], resolve)
+        },
+        {
           path: '/createRoutingRules',
           name: 'createRoutingRules',
-          component: resolve => require(['@/page/routingRules/handle/create_routingRules_dialog'], resolve)
+          component: resolve => require(['@/page/routingRules/handle/create_routingRules'], resolve)
         },
         {
           path: '/governanceTopology',
@@ -56,11 +66,6 @@ const router = new Router({
           path: '/gateway',
           name: 'Gateway',
           component: resolve => require(['@/page/gateway/index'], resolve)
-        },
-        {
-          path: '/serviceGovernance',
-          name: 'ServiceGovernance',
-          component: resolve => require(['@/page/serviceGovernance/index'], resolve)
         }
       ]
     }
@@ -68,10 +73,10 @@ const router = new Router({
 })
 
 const whiteRouter = ['/login', '/blank', '/prompt']
-const promptRouter = ['/prompt']
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
+  console.log(to, localStorage.getItem('token'), from.path)
   if (process.env.NODE_ENV === 'production' && to.path === '/login') {
     const static_name = Vue.prototype.pageConfig
     var path_name = '统一登录'
@@ -85,6 +90,7 @@ router.beforeEach((to, from, next) => {
     if (to.matched.length === 0) { // 如果未匹配到路由
       from.path ? next({ path: from.path }) : next('/') // 如果上级也未匹配到路由则跳转主页面，如果上级能匹配到则转上级路由
     } else {
+      console.log('232')
       next() // 如果匹配到正确跳转
     }
   } else {

@@ -12,31 +12,32 @@
             <el-table-column type="selection" width="60"></el-table-column>
             <el-table-column prop="date" label="路由规则名称" min-width="80">
               <template slot-scope="scope">
-                <router-link :to="'/storagePvcDetail/'+ scope.row.cluster_name +'/'+ scope.row.namespace+'/'+scope.row.name" style="color: #2d8cf0;">{{ scope.row.user_name }}</router-link>
+                <!-- <span>{{ scope.row.name }}</span> -->
+                <router-link :to="'/routingRulesDetail/'+ scope.row.uuid+'/'+scope.row.name" style="color: #2d8cf0;">{{ scope.row.name }}</router-link>
               </template>
             </el-table-column>
             <el-table-column prop="date" label="网关">
-              <template slot-scope="scope">{{ scope.row.open_type? '开通' : '未开通' }}</template>
+              <template slot-scope="scope">{{ scope.row.gateways }}</template>
             </el-table-column>
             <el-table-column prop="date" label="子域名解析">
               <template slot-scope="scope">{{ scope.row.protocol || '-' }}</template>
             </el-table-column>
             <el-table-column prop="date" label="状态">
-              <template slot-scope="scope">{{ scope.row.protocol || '-' }}</template>
+              <template slot-scope="scope"><span :style="{color:scope.row.status?'rgb(0, 175, 0)': 'red'}">{{ scope.row.status?'已部署':'未部署'  }}</span></template>
             </el-table-column>
             <el-table-column prop="date" label="访问地址">
               <template slot-scope="scope">{{ scope.row.protocol || '-' }}</template>
             </el-table-column>
             <el-table-column prop="date" label="创建时间">
-              <template slot-scope="scope">{{ scope.row.create_time | dateformat() }}</template>
+              <template slot-scope="scope">{{ scope.row.create_at | dateformat() }}</template>
             </el-table-column>
             <el-table-column prop="operate" label="操作">
               <template slot-scope="scope">
                 <el-dropdown size="small" placement="bottom" trigger="click">
                   <el-button circle icon="el-icon-setting"></el-button>
                   <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item @click.native="operate(scope.row, 'deploy')" icon="el-icon-edit">部署</el-dropdown-item>
-                    <el-dropdown-item @click.native="$refs.AddServiceGovernance.open_dialog(false,scope.row)" icon="el-icon-edit">修改</el-dropdown-item>
+                    <el-dropdown-item :disabled="!!scope.row.status" @click.native="deployRoutingRules(scope.row)" icon="el-icon-setting">部署</el-dropdown-item>
+                    <el-dropdown-item @click.native="modifyRoutingRules(scope.row)" icon="el-icon-edit">修改</el-dropdown-item>
                     <el-dropdown-item @click.native="operate(scope.row, 'deleteDialog')" icon="el-icon-delete">删除</el-dropdown-item>
                   </el-dropdown-menu>
                 </el-dropdown>
@@ -51,26 +52,19 @@
           </el-table>
           <el-pagination background v-if="List.length!==0" @size-change="handleSizeChange" @current-change="handlePageChange" :current-page="pageNum" :page-sizes="[10, 20, 50, 100]" :page-size="pageSize" layout="sizes, total, prev, pager, next, jumper" :total="total">
           </el-pagination>
-          <SugonDeleteDialog :list="selected" :isShow.sync="dialogDelete" @confirm="delRoutingRules" :title="`${selected.length > 1 ? '批量删除' : '删除'}`" :type="'shutDown'" nameKey="user_name" idKey="id"></SugonDeleteDialog>
+          <SugonDeleteDialog :list="selected" :isShow.sync="dialogDelete" @confirm="delRoutingRules" :title="`${selected.length > 1 ? '批量删除' : '删除'}`" :type="'shutDown'" nameKey="name" idKey="uuid"></SugonDeleteDialog>
         </div>
       </div>
     </el-row>
-    <processing-dialog ref="processingDialog" @ok="getList()"></processing-dialog>
-    <add-service-governance ref="AddServiceGovernance" @ok="getList()" />
   </div>
 </template>
 
 <script>
-  import * as serviceGovernance_http from '@/http/serviceGovernance-http'
-  import ProcessingDialog from './handle/processingDialog'
-  import AddServiceGovernance from './handle/addServiceGovernance'
+  import * as routingRulesHttp from '@/http/routingRules-http'
 
   export default {
     name: 'RoutingRules',
-    components: {
-      ProcessingDialog,
-      AddServiceGovernance
-    },
+    components: {},
     data() {
       return {
         loading: false,
@@ -94,21 +88,70 @@
     mounted() {
     },
     methods: {
+      deployRoutingRules(data) {
+        const h = this.$createElement
+        this.$msgbox({
+          title: '消息',
+          message: h('p', null, [
+            h('span', null, `确定部署此路由规则?`)
+
+          ]),
+          showCancelButton: true,
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          beforeClose: (action, instance, done) => {
+            if (action === 'confirm') {
+              instance.confirmButtonLoading = true
+              instance.confirmButtonText = '部署中'
+              routingRulesHttp.deploy_routerRule(data.uuid).then(res => {
+                if (res.status_code === 1) {
+                  this.$message({
+                    message: res.status_mes,
+                    type: 'success'
+                  })
+                  done()
+                  instance.confirmButtonLoading = false
+                  instance.confirmButtonText = '确定'
+                  this.getList()
+                } else {
+                  done()
+                  instance.confirmButtonLoading = false
+                  instance.confirmButtonText = '确定'
+                  this.$message({
+                    message: res.status_mes,
+                    type: 'error'
+                  })
+                }
+              })
+            } else {
+              done()
+            }
+          }
+        }).catch(_ => {
+
+        })
+      },
       getList() {
         const that = this
         this.loading = true
-        serviceGovernance_http.get_users(this.pageNum, this.pageSize, '', '').then(res => {
+        routingRulesHttp.get_routerRuleList(this.$store.state.information.cluster_name, this.$store.state.information.namespace).then(res => {
           if (res.status_code === 1) {
-            that.List = res.content ? res.content.records : []
-            that.total = res.content ? res.content.total : 1
+            that.List = res.content ? res.content : []
+            // that.total = res.content ? res.content.total : 1
             this.loading = false
           } else {
+            that.List = []
             that.loading = false
             that.$message({
               message: res.status_mes,
               type: 'error'
             })
           }
+        })
+      },
+      modifyRoutingRules(val) {
+        this.$router.push({
+          path: `/modifyRoutingRules/${val.uuid}/${val.name}`
         })
       },
       handleSelectionChange(currentRow) {
@@ -130,7 +173,7 @@
       delRoutingRules(response) {
         this.loading = true
         var arrs = response.data.map((item, index) => {
-          return serviceGovernance_http.del_access(item.id, true)
+          return routingRulesHttp.del_routerRule(item.id)
         })
         Promise.all(arrs).then((data) => {
           response.close()
@@ -144,34 +187,18 @@
           this.getList()
         })
       },
-      onCopy(e) {
-        this.$message({
-          type: 'success',
-          message: '复制成功'
-        })
-      },
-      // 复制失败
-      onError(e) {
-        this.$message({
-          type: 'error',
-          message: '复制失败'
-        })
-      },
       operate(item, data) {
         switch (data) {
           case 'deleteDialog':
             this.loading = false
             this.selected = []
             this.selected.push(item)
-            this.$table_select_repeat(this.selected, this.List, 'table_dom')
+            this.$table_select_repeat(this.selected, this.List, 'table_dom', '', 'uuid')
             this.dialogDelete = true
             break
           case 'delBatchDialog':
             this.dialogDelete = true
             this.loading = false
-            break
-          case 'deploy':
-            this.$refs.processingDialog.open_dialog(item, '部署')
             break
           case 'modify':
             // this.open_dialog('processingDialog',item,false)

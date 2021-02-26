@@ -1,6 +1,7 @@
 .main {
   .viewFramework-product-body {
     position: inherit;
+    overflow: inherit;
     & > div {
       padding: 0 !important;
       .console-title {
@@ -8,6 +9,164 @@
       }
       .console-table-wapper {
         padding: 0 !important;
+      }
+    }
+  }
+  //技术规格列表
+.specification-list {
+  // overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: u(0.7rem);
+  padding: u(0.1rem) u(0.2rem) u(0.1rem) u(0.12rem);
+  background: #f7f7f7;
+  margin: 0;
+  border-radius: 4px;
+  margin-bottom: u(0.06rem);
+  &:nth-child(odd) {
+      background: #fefefe;
+  }
+  &:last-child {
+      margin-bottom: u(0.2rem);
+  }
+  &:hover {
+      cursor: pointer;
+      background: rgba(34, 139, 230, 0.1);
+      dt,dd {
+          i,h2,p {
+              color: $blue;
+          }
+      }
+  }
+  dt {
+      float: left;
+      margin: 0;
+      max-width: calc(100% - 260px);
+      width: 70%;
+      i {
+          float: left;
+          font-size: u(0.32rem);
+          color: #666;
+      }
+      h2 {
+          margin: 0;
+          font-size: u(0.12rem);
+          margin-left: u(0.45rem);
+          line-height: u(0.24rem);
+      }
+      p {
+          margin: 0;
+          font-size: u(0.12rem);
+          margin-left: u(0.45rem);
+          color: #909399;
+      }
+  }
+  dd {
+      float: right;
+      width: 30%;
+      i {
+        float: left;
+        font-size: u(0.32rem);
+        color: #666;
+    }
+    h2 {
+        margin: 0;
+        font-size: u(0.12rem);
+        margin-left: u(0.45rem);
+        line-height: u(0.24rem);
+    }
+    p {
+        margin: 0;
+        font-size: u(0.12rem);
+        margin-left: u(0.45rem);
+        color: #909399;
+    }
+  }
+  dd:nth-child(2) {
+    float: left;
+  }
+}
+}
+.el-tabs__nav-wrap::after {
+  background-color: #E4E7ED !important;
+}
+
+.cv-vm-infobox {
+  dl {
+    min-height: 128px;
+    margin-bottom: 32px;
+    dt {
+      position: relative;
+      float: left;
+      width: 128px;
+      height: 128px;
+      border: 1px solid #D9D9D9;
+      border-radius: 4px;
+      background: rgba($color: #FAFBFE, $alpha: 0.5);
+      box-shadow: 0 3px 0 rgba($color: #000000, $alpha: 0.05);
+      overflow: hidden;
+      span {
+        font-size: 96px;
+        position: absolute;
+        font-size: 96px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-style: normal;
+        margin: -22px 0 0 -16px;
+        &::before {
+          font-size: 32px !important;
+        }
+      }
+    }
+    dd {
+      margin-left: 150px;
+      h3 {
+        margin: 0;
+        font-size: 14px;
+        line-height: 20px;
+        span {
+          font-size: 12px;
+          font-weight: normal;
+          color: #999;
+          display: inline-block;
+          margin-left: 16px;
+        }
+      }
+      p {
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 8px;
+      }
+      ul {
+        li {
+          display: inline-block;
+          padding-right: 72px;
+          h4 {
+            margin: 0;
+            font-size: 12px;
+            font-weight: normal;
+            color: #666;
+          }
+          p {
+            font-size: 24px;
+            color: #333;
+            span {
+              font-size: 12px;
+              vertical-align: baseline;
+              color: #999;
+              display: inline-block;
+              margin-left: 8px;
+            }
+          }
+        }
       }
     }
   }

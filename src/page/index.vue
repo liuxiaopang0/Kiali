@@ -6,12 +6,10 @@
     <div class="container">
       <sugon-menu :menuData="menu_list" ref="menu" @change="nav_change" />
       <div class="main">
-        <!-- <div class="container-box"> -->
-          <container-box-component bread="route" :title="'组件demo'" @breadClick="bread_click">
+        <container-box-component bread="route" ref="navbar" :title="'组件demo'" @breadClick="bread_click">
           <router-view :key="$route.fullpath"/>
-            </container-box-component>
-        </div>
-      <!-- </div> -->
+        </container-box-component>
+      </div>
     </div>
   </div>
 </template>
@@ -36,17 +34,11 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       menu_list: [
         {
-          icon: 'icon-yingyongzhongxin',
-          name: '管理中心',
+          icon: 'el-icon-user-solid',
+          name: '服务治理',
           id: '1',
           index: '',
           children: [
-            {
-              icon: 'el-icon-user-solid',
-              name: '服务治理',
-              id: '2',
-              index: '/serviceGovernance'
-            },
             {
               icon: 'el-icon-tickets',
               name: '网关',
@@ -64,6 +56,18 @@ export default {
                   name: '创建',
                   id: '6',
                   index: '/createRoutingRules'
+                },
+                {
+                  icon: 'el-icon-user-solid',
+                  name: '详情',
+                  id: '7',
+                  index: '/routingRulesDetail/:id/:name'
+                },
+                {
+                  icon: 'el-icon-user-solid',
+                  name: '修改',
+                  id: '2',
+                  index: '/modifyRoutingRules/:id/:name'
                 }
               ]
             },
@@ -85,10 +89,6 @@ export default {
     },
     '$store.state.menu.current_nav'() {
       this.$nextTick(() => {
-        // if (!this.navs.length) {
-        //   this.$emit('change', { group: [] })
-        // }
-        console.log('31111111111')
         this.$refs['menu'].init(this.$route.path)
       })
     }
@@ -121,7 +121,6 @@ export default {
       }
     },
     bread_click(href) {
-      this.$refs['navbar'].reset_path(href)
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div style="position: relative; height: 100%; width: 100%;background-color: #f5f5f5">
+  <div style="height: 100%; width: 100%;background-color: #f5f5f5">
     <div id="cytoscape_id" style="height: 100%; width: 100%;"></div>
   </div>
 </template>
@@ -12,6 +12,7 @@ import dagre from 'cytoscape-dagre'
 import popper from 'cytoscape-popper'
 import canvas from 'cytoscape-canvas'
 import cycola from 'cytoscape-cola'
+const nodeHtmlLabel = require('cy-node-html-label')
 
 cytoscape.use(canvas)
 cytoscape.use(cycola)
@@ -19,13 +20,14 @@ cytoscape.use(cola)
 cytoscape.use(dagre)
 cytoscape.use(popper)
 cytoscape.use(coseBilkent)
+nodeHtmlLabel(cytoscape)
 
 import NodeImageKey from '@/assets/img/node-background-key.png'
 import NodeImageTopology from '@/assets/img/node-background-topology.png'
 
 export default {
   name: 'CJS',
-  props: ['autoungrabify', 'nodes', 'edges'],
+  props: ['autoungrabify', 'nodes', 'edges', 'data'],
   data() {
     return {
       HEALTHY: {
@@ -40,7 +42,13 @@ export default {
         color: '#6a6e73',
         priority: 0,
         class: 'icon-na'
-      }
+      },
+
+      start: [
+        { 'centos7ssh': { 'workloadStatuses': [{ 'name': 'centos7ssh', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': -1 }], 'requests': { 'inbound': {}, 'outbound': {}}}, 'centos7ssh-1': { 'workloadStatuses': [{ 'name': 'centos7ssh-1', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': -1 }], 'requests': { 'inbound': {}, 'outbound': {}}}, 'details': { 'workloadStatuses': [{ 'name': 'details-v1', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': 0 }], 'requests': { 'inbound': {}, 'outbound': {}}}, 'minio': { 'workloadStatuses': [{ 'name': 'argo-artifacts', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': 0 }], 'requests': { 'inbound': {}, 'outbound': {}}}, 'nginx-ds': { 'workloadStatuses': [{ 'name': 'nginx-ds1', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': -1 }], 'requests': { 'inbound': {}, 'outbound': {}}}, 'productpage': { 'workloadStatuses': [{ 'name': 'productpage-v1', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': 0 }], 'requests': { 'inbound': {}, 'outbound': {}}}, 'ratings': { 'workloadStatuses': [{ 'name': 'ratings-v1', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': 0 }], 'requests': { 'inbound': {}, 'outbound': {}}}, 'reviews': { 'workloadStatuses': [{ 'name': 'reviews-v1', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': 0 }, { 'name': 'reviews-v2', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': 0 }], 'requests': { 'inbound': {}, 'outbound': {}}}, 'swfs-ca1': { 'workloadStatuses': [{ 'name': 'swfs-ca1', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': -1 }], 'requests': { 'inbound': {}, 'outbound': {}}}},
+        { 'argo-artifacts': { 'workloadStatus': { 'name': 'argo-artifacts', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': 0 }, 'requests': { 'inbound': {}, 'outbound': {}}}, 'centos7ssh': { 'workloadStatus': { 'name': 'centos7ssh', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': -1 }, 'requests': { 'inbound': {}, 'outbound': {}}}, 'centos7ssh-1': { 'workloadStatus': { 'name': 'centos7ssh-1', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': -1 }, 'requests': { 'inbound': {}, 'outbound': {}}}, 'details-v1': { 'workloadStatus': { 'name': 'details-v1', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': 0 }, 'requests': { 'inbound': {}, 'outbound': {}}}, 'nginx-ds1': { 'workloadStatus': { 'name': 'nginx-ds1', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': -1 }, 'requests': { 'inbound': {}, 'outbound': {}}}, 'productpage-v1': { 'workloadStatus': { 'name': 'productpage-v1', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': 0 }, 'requests': { 'inbound': {}, 'outbound': {}}}, 'quickstart-es-default': { 'workloadStatus': { 'name': 'quickstart-es-default', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': -1 }, 'requests': { 'inbound': {}, 'outbound': {}}}, 'ratings-v1': { 'workloadStatus': { 'name': 'ratings-v1', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': 0 }, 'requests': { 'inbound': {}, 'outbound': {}}}, 'reviews-v1': { 'workloadStatus': { 'name': 'reviews-v1', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': 0 }, 'requests': { 'inbound': {}, 'outbound': {}}}, 'reviews-v2': { 'workloadStatus': { 'name': 'reviews-v2', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': 0 }, 'requests': { 'inbound': {}, 'outbound': {}}}, 'seaweed1-filer': { 'workloadStatus': { 'name': 'seaweed1-filer', 'desiredReplicas': 3, 'currentReplicas': 3, 'availableReplicas': 0, 'syncedProxies': -1 }, 'requests': { 'inbound': {}, 'outbound': {}}}, 'seaweed1-master': { 'workloadStatus': { 'name': 'seaweed1-master', 'desiredReplicas': 3, 'currentReplicas': 3, 'availableReplicas': 3, 'syncedProxies': -1 }, 'requests': { 'inbound': {}, 'outbound': {}}}, 'seaweed1-volume': { 'workloadStatus': { 'name': 'seaweed1-volume', 'desiredReplicas': 3, 'currentReplicas': 3, 'availableReplicas': 0, 'syncedProxies': -1 }, 'requests': { 'inbound': {}, 'outbound': {}}}, 'swfs-ca1': { 'workloadStatus': { 'name': 'swfs-ca1', 'desiredReplicas': 1, 'currentReplicas': 1, 'availableReplicas': 1, 'syncedProxies': -1 }, 'requests': { 'inbound': {}, 'outbound': {}}}},
+        { 'argo-artifacts': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'centos7ssh-headless': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'centos7ssh-headless-1': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'centos7ssh-nodeport': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'centos7ssh-nodeport-1': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'details': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'kubernetes': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'productpage': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'quickstart-es-default': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'quickstart-es-http': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'quickstart-es-transport': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'ratings': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'reviews': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'seaweed1-filer': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'seaweed1-filer-peer': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'seaweed1-master': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'seaweed1-master-peer': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'seaweed1-volume-0': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'seaweed1-volume-1': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'seaweed1-volume-2': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'seaweed1-volume-peer': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'swfs-ca': { 'requests': { 'inbound': {}, 'outbound': {}}}, 'swfs-ca-headless': { 'requests': { 'inbound': {}, 'outbound': {}}}}
+      ]
     }
   },
   beforeCreate() {
@@ -68,6 +76,7 @@ export default {
       const isInaccessible = nodeData.isInaccessible
       const isServiceEntry = nodeData.isServiceEntry
       const isGroup = nodeData.isGroup
+      // console.log(isInaccessible && !isServiceEntry && !isGroup, isOutside && !isGroup, '2323', nodeData)
       if (isInaccessible && !isServiceEntry && !isGroup) {
         return NodeImageKey
       }
@@ -98,10 +107,11 @@ export default {
           return 'ellipse'
       }
     },
-    getNodeBorderColor(ele) {
+    getNodeborderColor(ele) {
+      // console.log(ele.data('healthStatus'), '232323')
       switch (ele.data('healthStatus')) {
         case 'Degraded':
-          return '#fff'
+          return '#FFA500'
         case 'Failure':
           return 'red'
         default:
@@ -109,19 +119,21 @@ export default {
       }
     },
     getEdgeLabel(ele, includeProtocol) {
-      const cyGlobal = { activeNamespaces: [
-        { name: 'default' }, { name: 'istio-system' }
-      ],
-      edgeLabelMode: 'requestRate',
-      graphType: 'app',
-      mtlsEnabled: false,
-      showCircuitBreakers: true,
-      showMissingSidecars: true,
-      showNodeLabels: true,
-      showSecurity: false,
-      showVirtualServices: true
-      }
-      // const cyGlobal = this.getCyGlobalData(ele)
+      console.log(ele, includeProtocol, 'getEdgeLabel')
+      // const cyGlobal = {
+      //   activeNamespaces: [
+      //     { name: 'default' }, { name: 'istio-system' }
+      //   ],
+      //   edgeLabelMode: 'requestRate',
+      //   graphType: 'app',
+      //   mtlsEnabled: false,
+      //   showCircuitBreakers: true,
+      //   showMissingSidecars: true,
+      //   showNodeLabels: true,
+      //   showSecurity: false,
+      //   showVirtualServices: true
+      // }
+      const cyGlobal = this.getCyGlobalData(ele)
       const edgeLabelMode = cyGlobal.edgeLabelMode
       console.log(edgeLabelMode, 'edgeLabelMode')
       let content = ''
@@ -245,7 +257,7 @@ export default {
         case 'FAILURE':
           return 'red'
         case 'DEGRADED':
-          return 'red'
+          return '#FFA500'
         default:
           return '#3e8635'
       }
@@ -400,7 +412,7 @@ export default {
         // showSecurity: this.props.showSecurity,
         // showNodeLabels: this.props.showNodeLabels,
         // showVirtualServices: this.props.showVirtualServices
-        activeNamespaces: [{ name: 'default' }, { name: 'istio-system' }],
+        activeNamespaces: [], // 选中了几个分区
         edgeLabelMode: 'noLabel',
         graphType: 'app',
         mtlsEnabled: false,
@@ -412,8 +424,6 @@ export default {
       }
       // cytoscape.warnings(false)
       this.$cy = cytoscape({
-        // name: 'group-compound-layout',
-        // fit: true,
         boxSelectionEnabled: false,
         autounselectify: false,
         userZoomingEnabled: true, // 是否允许用户事件（例如鼠标滚轮，捏合缩放）缩放图形
@@ -421,64 +431,19 @@ export default {
         autoungrabify: !this.autoungrabify, // 节点是否可以拖拽
         minZoom: 1e-50, // 图表缩放得最小界限
         maxZoom: 1e50, // 图表缩放级别的最大界限.视口的缩放比例不能大于此缩放级别.
-        // initial viewport state:
-        // zoom: 1, // 图表的初始缩放级别.可以设置options.minZoom和options.maxZoom设置缩放级别的限制.
-        // pan: { x: 0, y: 0 }, // 图表的初始平移位置.
-        // interaction options:
-        // minZoom: 1e-50, // 图表缩放级别的最小界限.视口的缩放比例不能小于此缩放级别.
-        // zoomingEnabled: true, // 是否通过用户事件和编程方式启用缩放图形.
-        // userZoomingEnabled: true, // 是否允许用户事件(例如鼠标滚轮,捏合缩放)缩放图形.对此缩放的编程更改不受此选项的影响.
-        // panningEnabled: true, // 是否通过用户事件和编程方式启用平移图形.
-        // userPanningEnabled: true, // 是否允许用户事件(例如拖动图形背景)平移图形.平移的程序化更改不受此选项的影响.
-        // boxSelectionEnabled: true, // 是否启用了框选择(即拖动框叠加,并将其释放为选择).如果启用,则用户必须点击以平移图表.
-        // selectionType: 'single', // 一个字符串，指示用户输入的选择行为.对于'additive',用户进行的新选择将添加到当前所选元素的集合中.对于'single',用户做出的新选择成为当前所选元素的整个集合.
-        // touchTapThreshold: 8, // 非负整数,分别表示用户在轻击手势期间可以在触摸设备和桌面设备上移动的最大允许距离.这使得用户更容易点击.
-        // // 这些值具有合理的默认值,因此建议不要更改这些选项,除非您有充分的理由这样做.大值几乎肯定会产生不良后果.
-        // desktopTapThreshold: 4, // 非负整数,分别表示用户在轻击手势期间可以在触摸设备和桌面设备上移动的最大允许距离.这使得用户更容易点击.
-        // // 这些值具有合理的默认值,因此建议不要更改这些选项,除非您有充分的理由这样做.大值几乎肯定会产生不良后果.
-        // autolock: false, // 默认情况下是否应锁定节点(根本不可拖动,如果true覆盖单个节点状态).
-        // autoungrabify: !this.autoungrabify, // 默认情况下节点是否不允许被拾取(用户不可抓取,如果true覆盖单个节点状态).
-        // autounselectify: false, // 默认情况下节点是否允许被选择(不可变选择状态,如果true覆盖单个元素状态).
-        // rendering options:
-        // headless: false, // true:空运行,不显示不需要容器容纳.false:显示需要容器容纳.
-        // styleEnabled: true, // 一个布尔值,指示是否应用样式.
-        // hideEdgesOnViewport: true, // 渲染提示,设置为true在渲染窗口时,不渲染边.例如,移动某个顶点时或缩放时,边信息会被临时隐藏,移动结束后,边信息会被执行一次渲染.由于性能增强,此选项现在基本上没有实际意义.
-        // hideLabelsOnViewport: true, // 渲染提示,当设置为true使渲染器在平移和缩放期间使用纹理而不是绘制元素时,使大图更具响应性.由于性能增强,此选项现在基本上没有实际意义.
-        // textureOnViewport: true, // 渲染提示,当设置为true使渲染器在平移和缩放期间使用纹理而不是绘制元素时,使大图更具响应性.由于性能增强,此选项现在基本上没有实际意义.
-        // motionBlur: true, // 渲染提示,设置为true使渲染器使用运动模糊效果使帧之间的过渡看起来更平滑.这可以增加大图的感知性能.由于性能增强,此选项现在基本上没有实际意义.
-        // motionBlurOpacity: 0.2, // 当motionBlur:true,此值控制运动模糊帧的不透明度.值越高,运动模糊效果越明显.由于性能增强,此选项现在基本上没有实际意义.
-        // wheelSensitivity: 0.3, // 缩放时更改滚轮灵敏度.这是一个乘法修饰符.因此,0到1之间的值会降低灵敏度(变焦较慢),而大于1的值会增加灵敏度(变焦更快).
-        // pixelRatio: 'auto', // 使用手动设置值覆盖屏幕像素比率(1.0建议,如果已设置).这可以通过减少需要渲染的有效区域来提高高密度显示器的性能,
-        // 尽管在最近的浏览器版本中这是不太必要的.如果要使用硬件的实际像素比,可以设置pixelRatio: 'auto'(默认).
-        // DOM容器,决定内容展示的位置,方式一(原生):document.getElementById('xx'),方式二(jQuery):$('#xx')
         container: document.getElementById('cytoscape_id'),
         layout: {
-          // animate: false,
-          // fit: false,
-          // name: 'cose-bilkent',
-          // nodeDimensionsIncludeLabels: true
-          // animate: false,
-          // fit: false,
-          // name: 'cose-bilkent',
-          // nodeDimensionsIncludeLabels: true
-          animate: false,
+          name: 'dagre',
           fit: false,
-          flow: {
-            axis: 'x',
-            minSeparation: 50 },
-          name: 'cola',
           nodeDimensionsIncludeLabels: true,
-          randomize: false
-          // name: 'group-compound-layout',
-          // realLayout: 'group-compound-layout'
-          // Currently we do not support non discrete layouts for the compounds, but this can be supported if needed.
-          // compoundLayoutOptions: LayoutDictionary.getLayout(DagreGraph.getLayout())
+          rankDir: 'LR'
         },
         style: [
           {
             selector: 'node',
             style: {
-              content: 'data(app)',
+              // label: 'data(app)',
+              // content: 'data(app)',
               'background-color': '#fff',
               'background-image': (ele) => {
                 return this.getNodeBackgroundImage(ele)
@@ -498,7 +463,7 @@ export default {
                 return '50%'
               },
               'border-color': (ele) => {
-                return this.getNodeBorderColor(ele)
+                return this.getNodeborderColor(ele)
               },
               'border-style': (ele) => {
                 return this.decoratedNodeData(ele).isUnused ? 'dotted' : 'solid'
@@ -516,42 +481,47 @@ export default {
               'z-index': 10
             }
           },
-          // {
-          //   selector: `node[?isGroup]`,
-          //   css: {
-          //     'background-color': '#fff'
-          //   }
-          // },
+          // 节点是一个应用程序框
+          {
+            selector: `node[?isGroup]`,
+            css: {
+              'background-color': '#fff'
+            }
+          },
+          // 选择节点
           {
             selector: 'node:selected',
             style: {
               'border-color': (ele) => {
-                console.log(ele, ele.data(), 'ele.data()')
+                console.log(ele, ele.data(), 'ele.data()', ele.data('healthStatus'))
                 switch (ele.data('healthStatus')) {
                   case 'Degraded':
-                    return 'red'
-                  case 'FAILURE':
+                    return '#FFA500'
+                  case 'Failure':
                     return 'red'
                   default:
-                    return '#39a5dc'
+                    return '#CCCCCC'
                 }
               },
               'border-width': '3px'
             }
           },
+          // 节点被突出显示（请参阅GraphHighlighter.ts）
           {
             selector: 'node.mousehighlight',
             style: {
               'font-size': '11px'
             }
           },
+          // 除“应用程序框”以外的节点被突出显示（请参见GraphHighlighter.ts）
           {
+            // 选中的图标颜色
             selector: `node.mousehighlight[^isGroup]`,
             style: {
               'background-color': (ele) => {
                 switch (ele.data('healthStatus')) {
                   case 'DEGRADED':
-                    return '#fdf2e5'
+                    return '#FFA500'
                   case 'FAILURE':
                     return '#ffe6e6'
                   default:
@@ -561,7 +531,7 @@ export default {
               'border-color': (ele) => {
                 switch (ele.data('healthStatus')) {
                   case 'DEGRADED':
-                    return '#fff'
+                    return '#FFA500'
                   case 'FAILURE':
                     return 'red'
                   default:
@@ -570,6 +540,7 @@ export default {
               }
             }
           },
+          // 节点为灰色（请参见GraphHighlighter.ts）
           {
             selector: 'node.mousedim',
             style: {
@@ -577,18 +548,25 @@ export default {
             }
           },
           {
-            selector: ':parent',
-            css: {
-              'text-valign': 'bottom',
-              'text-halign': 'center'
-            // 'text-halign': 'right',
-            // 'text-rotation': '90deg', //文字旋转
+            selector: 'node.mousehover',
+            style: {
+              label: (ele) => {
+                return this.getEdgeLabel(ele, true)
+              }
             }
           },
+          // {
+          //   selector: ':parent',
+          //   css: {
+          //     'text-valign': 'bottom',
+          //     'text-halign': 'center'
+          //   // 'text-halign': 'right',
+          //   // 'text-rotation': '90deg', //文字旋转
+          //   }
+          // },
           {
             selector: 'edge',
             css: {
-              // 'label': 'data(traffic.protocol)',
               'curve-style': 'bezier',
               'font-family': 'Verdana,Arial,Helvetica,sans-serif,pficon',
               'font-size': '6px',
@@ -612,8 +590,7 @@ export default {
             selector: 'edge:selected',
             css: {
               width: 4,
-              'label': 'data(traffic.protocol)'
-              // label: (ele) => this.getEdgeLabel(ele, true)
+              label: (ele) => this.getEdgeLabel(ele, true)
             }
           },
           {
@@ -662,16 +639,156 @@ export default {
 
         ],
         elements: {
-          nodes: this.nodes,
-          edges: this.edges
+          nodes: this.data.nodes,
+          edges: this.data.edges
         }
       })
       this.$cy.scratch('_global', globalScratchData)
-      // this.$cy.nodeHtmlLabel(this.htmlNodeLabels(this.$cy))
+      this.$cy.nodeHtmlLabel(this.htmlNodeLabels(this.$cy))
+      this.$cy.on('mouseover', 'node,edge', (evt) => {
+        const cytoscapeEvent = this.getCytoscapeBaseEvent(evt)
+        console.log(cytoscapeEvent, 'cytoscapeEvent')
+        if (cytoscapeEvent) {
+          this.handleMouseIn(cytoscapeEvent)
+        }
+      })
+
+      this.$cy.on('mouseout', 'node,edge', (evt) => {
+        const cytoscapeEvent = this.getCytoscapeBaseEvent(evt)
+        if (cytoscapeEvent) {
+          this.handleMouseOut(cytoscapeEvent)
+        }
+      })
+
+      // this.$cy.on('viewport', (evt) => {
+      //   const cytoscapeEvent = this.getCytoscapeBaseEvent(evt)
+      //   if (cytoscapeEvent) {
+      //     this.customViewport = true
+      //   }
+      // })
+
+      // //   // 'fit' is a custom event that we emit allowing us to reset cytoscapeGraph.customViewport
+      // this.$cy.on('fit', (evt) => {
+      //   const cytoscapeEvent = this.getCytoscapeBaseEvent(evt)
+      //   if (cytoscapeEvent) {
+      //     this.customViewport = false
+      //   }
+      // })
+    },
+    handleMouseOut(event) {
+      if (this.hovered && this.hovered.summaryTarget === event.summaryTarget) {
+        this.clearHover()
+        this.unhighlight()
+      }
+    },
+    unhighlight() {
+      this.$cy.elements('.mousedim').removeClass('mousedim')
+      this.$cy.elements('.mousehighlight').removeClass('mousehighlight')
+    },
+    clearHover() {
+      if (this.hovered) {
+        this.hovered.summaryTarget.removeClass('mousehover')
+        this.hovered = undefined
+      }
+    },
+    handleMouseIn(event) {
+      if (['node', 'edge', 'group'].indexOf(event.summaryType) !== -1) {
+        this.hovered = event
+        this.hovered.summaryTarget.addClass('mousehover')
+        this.refresh1()
+      }
+    },
+    refresh1() {
+      const toHighlight = this.getHighlighted()
+      console.log(toHighlight, 'toHighlight')
+      if (!toHighlight) {
+        return
+      }
+
+      toHighlight.addClass('mousehighlight')
+      this.$cy.elements().difference(toHighlight).addClass('mousedim')
+    },
+    getHighlighted() {
+      const isHover = true
+      const event = isHover ? this.hovered : this.selected
+      if (event) {
+        switch (event.summaryType) {
+          case 'node':
+            return this.getNodeHighlight(event.summaryTarget, isHover)
+          case 'edge':
+            return this.getEdgeHighlight(event.summaryTarget, isHover)
+          case 'group':
+            return this.getAppBoxHighlight(event.summaryTarget, isHover)
+          default:
+        // fall through
+        }
+      }
+      return undefined
+    },
+    getNodeHighlight(node, isHover) {
+      const elems = isHover ? node.closedNeighborhood() : node.predecessors().add(node.successors())
+      return this.includeParentNodes(elems.add(node))
+    },
+    getAppBoxHighlight(appBox, isHover) {
+      let elems
+      if (isHover) {
+        elems = appBox.children().reduce((prev, child) => {
+          return prev.add(child.closedNeighborhood())
+        }, this.$cy.collection())
+      } else {
+        const children = appBox.children()
+        elems = children.add(children.predecessors()).add(children.successors())
+      }
+      return this.includeParentNodes(elems)
+    },
+    getEdgeHighlight(edge, isHover) {
+      let elems
+      if (isHover) {
+        elems = edge.connectedNodes()
+      } else {
+        const source = edge.source()
+        const target = edge.target()
+        elems = source.add(target).add(source.predecessors()).add(target.successors())
+      }
+      return this.includeParentNodes(elems.add(edge))
+    },
+    includeParentNodes(nodes) {
+      return nodes.reduce((all, current) => {
+        all = all.add(current)
+        if (current.isChild()) {
+          all = all.add(current.parent())
+        }
+        return all
+      }, this.$cy.collection())
+    },
+    getCytoscapeBaseEvent(event) {
+      const target = event.target
+      console.log(event, 'event', target)
+      if (target === this.$cy) {
+        return { summaryType: 'graph', summaryTarget: this.$cy }
+      } else if (this.isNode(target)) {
+        if (target.data('isGroup')) {
+          return { summaryType: 'group', summaryTarget: target }
+        } else {
+          return { summaryType: 'node', summaryTarget: target }
+        }
+      } else if (this.isEdge(target)) {
+        return { summaryType: 'edge', summaryTarget: target }
+      } else {
+        return null
+      }
+    },
+    isCore(target) {
+      return !('cy' in target)
+    },
+    isNode(target) {
+      return !this.isCore(target) && target.isNode()
+    },
+    isEdge(target) {
+      return !this.isCore(target) && target.isEdge()
     },
     // 更改文字
     htmlNodeLabels(cy) {
-      console.log(cy, '121212')
       return [
         {
           query: 'node:visible',
@@ -684,14 +801,12 @@ export default {
       ]
     },
     htmlLabelForNode(ele) {
-      console.log(ele, '33333')
       const getCyGlobalData = (ele) => {
         return ele.cy().scratch('_global')
       }
 
       let content = ''
       const cyGlobal = getCyGlobalData(ele)
-      console.log(cyGlobal, 'cyGlobal')
       var data = this.decoratedNodeData(ele)
       console.log(data, 'data')
       let labelRawStyle = ''
@@ -711,32 +826,20 @@ export default {
       }
 
       let badges = ''
-      debugger
       if (cyGlobal.showMissingSidecars && data.hasMissingSC) {
-        badges = `<span class="pf-icon pf-icon-blueprint" style="marginLeft: 1px"></span> ${badges}`
+        badges = `<span class="icon-fuzhi" style="marginLeft: 1px"></span> ${badges}`
       }
       if (cyGlobal.showCircuitBreakers && data.hasCB) {
-        badges = `<span class="pf-icon pf-icon-blueprint" style="marginLeft: 1px"></span> ${badges}`
+        badges = `<span class="icon-shandian" style="marginLeft: 1px"></span> ${badges}`
       }
       if (cyGlobal.showVirtualServices && data.hasVS) {
-        badges = `<span class="fa fa-code-branch" style="marginLeft: 1px"></span> ${badges}`
+        badges = `<span class="icon-master" style="marginLeft: 1px"></span> ${badges}`
       }
-      console.log(badges, 'badges')
       if (badges.length > 0) {
-        badges = `<div style="alignItems: center;
-        backgroundColor: #703fec;
-        borderTopLeftRadius: 3px;
-        borderBottomLeftRadius: 3px;
-        color: #fff;
-        display: flex;
-        fontSize: 12px;
-        padding: 3px 3px">${badges}</div>`
+        badges = `<div style="align-Items: center;background-color: #703fec;border-top-left-radius: 3px;border-bottom-left-radius: 3px;color: #fff;display: flex;font-size: 12px;padding: 3px 3px">${badges}</div>`
       }
-      console.log(badges, 'badges222')
-
       const hasBadge = badges.length > 0
 
-      console.log(getCyGlobalData(ele).showNodeLabels, 'getCyGlobalData(ele).showNodeLabels')
       if (getCyGlobalData(ele).showNodeLabels) {
         const app = data.app || ''
         const isGroupMember = data.parent
@@ -755,12 +858,12 @@ export default {
           contentRawStyle += `color: #fff;`
         }
         if (ele.hasClass('mousehighlight')) {
-          contentRawStyle += 'font-size: ' + '11px' + ';'
+          contentRawStyle += 'font-size: 11px;'
         }
 
         if (isGroupMember) {
           switch (nodeType) {
-            case 'AGGREGATE':
+            case 'aggregate':
               content = data.aggregateValue ? data.aggregateValue : ''
               break
             case 'app':
@@ -772,10 +875,10 @@ export default {
                 content = workload ? `${workload}` : `${app}`
               }
               break
-            case 'SERVICE':
+            case 'service':
               content = service
               break
-            case 'WORKLOAD':
+            case 'workload':
               content = workload
               break
             default:
@@ -812,25 +915,9 @@ export default {
           }
           content = contentArray.join('<br/>')
         }
-        content = `<div style="alignItems: 'center';
-        backgroundColor: withAlpha(NodeTextBackgroundColor, 'a');
-        color: '#030303';
-        display: flex;
-        fontSize: '8px';
-        padding: 3px 5px;
-        borderRadius: 3px;
-        borderWidth: 1px;" 
-      style="${contentRawStyle} ${hasBadge ? 'borderBottomLeftRadius: unset;borderColor: #703fec;borderStyle: solid;borderTopLeftRadius: unset;borderLeft: 0' : ''} ">${content}</div>`
+        content = `<div style="align-items:center;display: flex;font-size: 8px;padding: 3px 5px;border-radius: 3px;border-width: 1px;${contentRawStyle}${hasBadge ? 'border-bottom-left-radius: unset;border-color: #703fec;border-left: 0;border-style: solid;border-top-left-radius: unset;borderLeft: 0' : ''}">${content}</div>`
       }
-      return `<div  style="${labelRawStyle}  borderRadius: 3px;
-          boxShadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
-          display: flex;
-          fontFamily: NodeTextFont,
-          fontSize: 0;
-          fontWeight: normal;
-          marginTop: 4px;
-          lineHeight: 11px;
-          textAlign: center">${badges}${content}</div>`
+      return `<div style="border-radius: 3px;box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19);display: flex;font-family: Verdana,Arial,Helvetica,sans-serif,pficon,font-size: 0;font-weight: normal;margin-top: 4px;line-height: 11px;text-align: center;${labelRawStyle}">${badges}${content}</div>`
     },
     addEles(eles) {
       if (eles) {
@@ -947,10 +1034,11 @@ export default {
      * ['grid', 'circle', 'cola', 'avsdf', 'cose-bilkent', ]
      * @param {name = 'cola......', randomize = true | false, animate = true | false}
      */
-    refresh({ name, randomize = false, animate = true } = {}) {
+    refresh(data) {
       this.$cy
-        .layout({ name: name, randomize: randomize, animate: animate })
+        .layout({ ...data })
         .run()
+      this.$cy.fit()
     }
     /** *************************工具栏************************/
   }

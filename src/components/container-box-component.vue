@@ -33,16 +33,37 @@ export default {
       var res = ''
       if (this.bread === 'route') {
         var arr = []
-        if (state.menu.current_first_nav) {
-          arr.push(state.menu.current_first_nav)
-        }
+        // if (state.menu.current_first_nav) {
+        //   arr.push(state.menu.current_first_nav)
+        // }
         if (!state.menu.current_menu) return arr
         if (state.menu.current_menu.group !== state.menu.current_menu.item) {
-          arr.push(state.menu.current_menu.group)
-          arr.push(state.menu.current_menu.item)
+          state.menu.current_menu.group.children.forEach(element => {
+            if (element.name !== state.menu.current_menu.item.name && element.children) {
+              element.children.forEach(ele => {
+                if (ele.name !== state.menu.current_menu.item.name && ele.children) {
+                  ele.children.forEach(item => {
+                    arr.push(item)
+                  })
+                } else if (ele.name === state.menu.current_menu.item.name) {
+                  arr = []
+                  arr.push(state.menu.current_menu.group)
+                  arr.push({ ...element, children: '' })
+                  arr.push(ele)
+                  return
+                }
+              })
+            } else if (element.name === state.menu.current_menu.item.name) {
+              arr = []
+              arr.push(state.menu.current_menu.group)
+              arr.push(state.menu.current_menu.item)
+              return
+            }
+          })
         } else {
           arr.push(state.menu.current_menu.group)
         }
+        console.log(arr)
         const menu = arr.map((item, index) => {
           const obj = {
             name: item.name,
@@ -66,6 +87,7 @@ export default {
   }),
   methods: {
     bread_click(href) {
+      console.log(href, 'href')
       this.$emit('breadClick', href)
     }
   }

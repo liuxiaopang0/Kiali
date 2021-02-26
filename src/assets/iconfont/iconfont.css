@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'iconfont';
-  src:  url('iconfont.eot?ch8m5o');
-  src:  url('iconfont.eot?ch8m5o#iefix') format('embedded-opentype'),
-    url('iconfont.ttf?ch8m5o') format('truetype'),
-    url('iconfont.woff?ch8m5o') format('woff'),
-    url('iconfont.svg?ch8m5o#iconfont') format('svg');
+  src:  url('iconfont.eot?6v8m3l');
+  src:  url('iconfont.eot?6v8m3l#iefix') format('embedded-opentype'),
+    url('iconfont.ttf?6v8m3l') format('truetype'),
+    url('iconfont.woff?6v8m3l') format('woff'),
+    url('iconfont.svg?6v8m3l#iconfont') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-fuzhi:before {
+  content: "\e748";
+}
+.icon-master:before {
+  content: "\e601";
+}
+.icon-shandian:before {
+  content: "\e60f";
+}
 .icon-suofang:before {
   content: "\e61f";
 }
@@ -43,845 +52,857 @@
 .icon-move-full:before {
   content: "\ea57";
 }
-.icon-bushu:before {
-  content: "\e601";
-}
-.icon-alert-processing:before {
+.icon-guanxitu2:before {
   content: "\e602";
 }
-.icon-yingyongguanli1:before {
+.icon-bushu:before {
   content: "\e603";
 }
-.icon-list:before {
+.icon-alert-processing:before {
   content: "\e604";
 }
-.icon-regions:before {
+.icon-yingyongguanli1:before {
   content: "\e605";
 }
-.icon-jiqun:before {
+.icon-list:before {
   content: "\e606";
 }
-.icon-gongzuotai:before {
+.icon-regions:before {
   content: "\e607";
 }
-.icon-encryption:before {
+.icon-jiqun:before {
   content: "\e608";
 }
-.icon-ico-41:before {
+.icon-gongzuotai:before {
   content: "\e609";
 }
-.icon-about-system:before {
+.icon-encryption:before {
   content: "\e60a";
 }
-.icon-xiangmuguanli:before {
+.icon-ico-41:before {
   content: "\e60b";
 }
-.icon-ico-42:before {
+.icon-about-system:before {
   content: "\e60c";
 }
-.icon-ico-43:before {
+.icon-xiangmuguanli:before {
   content: "\e60d";
 }
-.icon-ico-44:before {
+.icon-ico-42:before {
   content: "\e60e";
 }
-.icon-peizhi:before {
-  content: "\e60f";
-}
-.icon-churukou1:before {
+.icon-ico-43:before {
   content: "\e610";
 }
-.icon-ico-45:before {
+.icon-ico-44:before {
   content: "\e611";
 }
-.icon-ico-46:before {
+.icon-peizhi:before {
   content: "\e612";
 }
-.icon-mobanguanli:before {
+.icon-churukou1:before {
   content: "\e613";
 }
-.icon-ico-47:before {
+.icon-ico-45:before {
   content: "\e614";
 }
-.icon-ziyuan:before {
+.icon-ico-46:before {
   content: "\e615";
 }
-.icon-ico-48:before {
+.icon-mobanguanli:before {
   content: "\e616";
 }
-.icon-yingyongguanli:before {
+.icon-ico-47:before {
   content: "\e617";
 }
-.icon-jiaoseguanli:before {
+.icon-ziyuan:before {
   content: "\e618";
 }
-.icon-xingzhuang:before {
+.icon-ico-48:before {
   content: "\e619";
 }
-.icon-ico-49:before {
+.icon-yingyongguanli:before {
   content: "\e61a";
 }
-.icon-ico-50:before {
+.icon-jiaoseguanli:before {
   content: "\e61b";
 }
-.icon-locationInfo:before {
+.icon-xingzhuang:before {
   content: "\e61c";
 }
-.icon-ico-51:before {
+.icon-ico-49:before {
   content: "\e61d";
 }
-.icon-ico-52:before {
+.icon-ico-50:before {
   content: "\e61e";
 }
-.icon-cunchujuan:before {
+.icon-locationInfo:before {
   content: "\e620";
 }
-.icon-ico-53:before {
+.icon-ico-51:before {
   content: "\e621";
 }
-.icon-previous:before {
+.icon-ico-52:before {
   content: "\e622";
 }
-.icon-thickProvisioningSupport:before {
+.icon-suofang1:before {
   content: "\e623";
 }
-.icon-ico-54:before {
+.icon-cunchujuan:before {
   content: "\e624";
 }
-.icon-ico-55:before {
+.icon-ico-53:before {
   content: "\e625";
 }
-.icon-yingyongzhongxin:before {
+.icon-previous:before {
   content: "\e626";
 }
-.icon-pingjuchaxun:before {
+.icon-thickProvisioningSupport:before {
   content: "\e627";
 }
-.icon-ico-56:before {
+.icon-ico-54:before {
   content: "\e628";
 }
-.icon-ico-57:before {
+.icon-ico-55:before {
   content: "\e629";
 }
-.icon-ico-58:before {
+.icon-yingyongzhongxin:before {
   content: "\e62a";
 }
-.icon-ico-59:before {
+.icon-pingjuchaxun:before {
   content: "\e62b";
 }
-.icon-zu1776:before {
+.icon-ico-56:before {
   content: "\e62c";
 }
-.icon-ico-60:before {
+.icon-ico-57:before {
   content: "\e62d";
 }
-.icon-fenquguanli:before {
+.icon-ico-58:before {
   content: "\e62e";
 }
-.icon-ico-61:before {
+.icon-ico-59:before {
   content: "\e62f";
 }
-.icon-ico-62:before {
+.icon-zu1776:before {
   content: "\e630";
 }
-.icon-ico-63:before {
+.icon-ico-60:before {
   content: "\e631";
 }
-.icon-ico-64:before {
+.icon-fenquguanli:before {
   content: "\e632";
 }
-.icon-ico-65:before {
+.icon-ico-61:before {
   content: "\e633";
 }
-.icon-ico-66:before {
+.icon-ico-62:before {
   content: "\e634";
 }
-.icon-zhujizhuangtai:before {
+.icon-ico-63:before {
   content: "\e635";
 }
-.icon-ico-67:before {
+.icon-ico-64:before {
   content: "\e636";
 }
-.icon-ico-68:before {
+.icon-ico-65:before {
   content: "\e637";
 }
-.icon-ico-69:before {
+.icon-ico-66:before {
   content: "\e638";
 }
-.icon-ico-70:before {
+.icon-zhujizhuangtai:before {
   content: "\e639";
 }
-.icon-ico-71:before {
+.icon-ico-67:before {
   content: "\e63a";
 }
-.icon-ico-72:before {
+.icon-ico-68:before {
   content: "\e63b";
 }
-.icon-ico-73:before {
+.icon-ico-69:before {
   content: "\e63c";
 }
-.icon-ico-74:before {
+.icon-ico-70:before {
   content: "\e63d";
 }
-.icon-ico-75:before {
+.icon-ico-71:before {
   content: "\e63e";
 }
-.icon-ico-76:before {
+.icon-ico-72:before {
   content: "\e63f";
 }
-.icon-ico-77:before {
+.icon-ico-73:before {
   content: "\e640";
 }
-.icon-ico-78:before {
+.icon-ico-74:before {
   content: "\e641";
 }
-.icon-cipanio:before {
+.icon-ico-75:before {
   content: "\e643";
 }
-.icon-yingyong1:before {
+.icon-ico-76:before {
   content: "\e644";
 }
-.icon-guanlizhongxin:before {
+.icon-ico-77:before {
   content: "\e645";
 }
-.icon-cunchuqia:before {
+.icon-ico-78:before {
   content: "\e646";
 }
-.icon-tubiao_peizhi:before {
+.icon-zoomIn1:before {
   content: "\e647";
 }
-.icon-guanli1:before {
+.icon-cipanio:before {
   content: "\e648";
 }
-.icon-rongqijiqun:before {
+.icon-yingyong1:before {
   content: "\e649";
 }
-.icon-xiangmu:before {
+.icon-guanlizhongxin:before {
   content: "\e64a";
 }
-.icon-caozuorizhi:before {
+.icon-cunchuqia:before {
   content: "\e64b";
 }
-.icon-zhuji:before {
+.icon-tubiao_peizhi:before {
   content: "\e64c";
 }
-.icon-yingyongzhongxin1:before {
+.icon-guanli1:before {
   content: "\e64d";
 }
-.icon-guanlizhongxin2:before {
+.icon-rongqijiqun:before {
   content: "\e64e";
 }
-.icon-zu17761:before {
+.icon-xiangmu:before {
   content: "\e64f";
 }
-.icon-inner-net:before {
+.icon-caozuorizhi:before {
   content: "\e650";
 }
-.icon-cancel-release:before {
+.icon-zhuji:before {
   content: "\e651";
 }
-.icon-xiaoxi:before {
+.icon-yingyongzhongxin1:before {
   content: "\e652";
 }
-.icon-datacenter:before {
+.icon-guanlizhongxin2:before {
   content: "\e653";
 }
-.icon-outer-subnet:before {
+.icon-zu17761:before {
   content: "\e654";
 }
-.icon-organization:before {
+.icon-inner-net:before {
   content: "\e656";
 }
-.icon-wenjiancunchu:before {
+.icon-cancel-release:before {
   content: "\e657";
 }
-.icon-bare-metal:before {
+.icon-xiaoxi:before {
   content: "\e658";
 }
-.icon-pop-up:before {
+.icon-datacenter:before {
   content: "\e659";
 }
-.icon-elastic-scaling-old:before {
+.icon-outer-subnet:before {
   content: "\e65a";
 }
-.icon-forbidden:before {
+.icon-suoxiao1:before {
   content: "\e65b";
 }
-.icon-audit-log:before {
+.icon-organization:before {
   content: "\e65c";
 }
-.icon-export:before {
+.icon-wenjiancunchu:before {
   content: "\e65d";
 }
-.icon-_wenjianjia:before {
+.icon-bare-metal:before {
   content: "\e65e";
 }
-.icon-quota:before {
+.icon-pop-up:before {
   content: "\e65f";
 }
-.icon-task:before {
+.icon-elastic-scaling-old:before {
   content: "\e660";
 }
-.icon-quota-manage:before {
+.icon-forbidden:before {
   content: "\e661";
 }
-.icon-identity:before {
+.icon-audit-log:before {
   content: "\e662";
 }
-.icon-resource-ha:before {
+.icon-export:before {
   content: "\e663";
 }
-.icon-system-alert:before {
+.icon-_wenjianjia:before {
   content: "\e664";
 }
-.icon-restore-backup:before {
+.icon-quota:before {
   content: "\e665";
 }
-.icon-flow-path:before {
+.icon-task:before {
   content: "\e666";
 }
-.icon-disk-backup:before {
+.icon-quota-manage:before {
   content: "\e667";
 }
-.icon-iso:before {
+.icon-identity:before {
   content: "\e668";
 }
-.icon-shujuyuanguanli:before {
+.icon-resource-ha:before {
   content: "\e669";
 }
-.icon-release:before {
+.icon-system-alert:before {
   content: "\e66a";
 }
-.icon-stop-noline:before {
+.icon-restore-backup:before {
   content: "\e66b";
 }
-.icon-health:before {
+.icon-flow-path:before {
   content: "\e66c";
 }
-.icon-hot-add:before {
+.icon-disk-backup:before {
   content: "\e66d";
 }
-.icon-view-resource:before {
+.icon-iso:before {
   content: "\e66e";
 }
-.icon-delete-rules:before {
+.icon-shujuyuanguanli:before {
   content: "\e66f";
 }
-.icon-thin-capacity:before {
+.icon-release:before {
   content: "\e670";
 }
-.icon-zuzhiguanli:before {
+.icon-stop-noline:before {
   content: "\e671";
 }
-.icon-add-router:before {
+.icon-health:before {
   content: "\e672";
 }
-.icon-delete-router:before {
+.icon-hot-add:before {
   content: "\e673";
 }
-.icon-expanded:before {
+.icon-view-resource:before {
   content: "\e674";
 }
-.icon-save:before {
+.icon-delete-rules:before {
   content: "\e675";
 }
-.icon-gongzuo1:before {
+.icon-thin-capacity:before {
   content: "\e676";
 }
-.icon-fuwu:before {
+.icon-zuzhiguanli:before {
   content: "\e677";
 }
-.icon-dc-check-run:before {
+.icon-add-router:before {
   content: "\e678";
 }
-.icon-baoguo:before {
+.icon-delete-router:before {
   content: "\e679";
 }
-.icon-break-router:before {
+.icon-expanded:before {
   content: "\e67a";
 }
-.icon-read:before {
+.icon-save:before {
   content: "\e67b";
 }
-.icon-dc-check-running:before {
+.icon-gongzuo1:before {
   content: "\e67c";
 }
-.icon-yingyong:before {
+.icon-fuwu:before {
   content: "\e67d";
 }
-.icon-dc-check:before {
+.icon-dc-check-run:before {
   content: "\e67e";
 }
-.icon-refresh:before {
+.icon-baoguo:before {
   content: "\e67f";
 }
-.icon-next:before {
+.icon-break-router:before {
   content: "\e680";
 }
-.icon-cangku:before {
+.icon-read:before {
   content: "\e681";
 }
-.icon-yingyonchengxumuban:before {
+.icon-dc-check-running:before {
   content: "\e682";
 }
-.icon-add-iso:before {
+.icon-yingyong:before {
   content: "\e683";
 }
-.icon-organization-manage:before {
+.icon-dc-check:before {
   content: "\e684";
 }
-.icon-task-manage:before {
+.icon-refresh:before {
   content: "\e685";
 }
-.icon-mount-server:before {
+.icon-next:before {
   content: "\e686";
 }
-.icon-remove-server:before {
+.icon-cangku:before {
   content: "\e687";
 }
-.icon-regions-manage:before {
+.icon-yingyonchengxumuban:before {
   content: "\e688";
 }
-.icon-jiaose1:before {
+.icon-add-iso:before {
   content: "\e689";
 }
-.icon-services:before {
+.icon-organization-manage:before {
   content: "\e68a";
 }
-.icon-error-noline:before {
+.icon-task-manage:before {
   content: "\e68b";
 }
-.icon-yuncunchu:before {
+.icon-mount-server:before {
   content: "\e68c";
 }
-.icon-run-nolline:before {
+.icon-remove-server:before {
   content: "\e68d";
 }
-.icon-nodata:before {
+.icon-regions-manage:before {
   content: "\e68e";
 }
-.icon-no-role:before {
+.icon-jiaose1:before {
   content: "\e68f";
 }
-.icon-operate:before {
+.icon-services:before {
   content: "\e690";
 }
-.icon-price:before {
+.icon-error-noline:before {
   content: "\e691";
 }
-.icon-metering-billing:before {
+.icon-yuncunchu:before {
   content: "\e692";
 }
-.icon-report-forms:before {
+.icon-run-nolline:before {
   content: "\e693";
 }
-.icon-template:before {
+.icon-nodata:before {
   content: "\e694";
 }
-.icon-assets-statement:before {
+.icon-no-role:before {
   content: "\e695";
 }
-.icon-data-disk:before {
+.icon-operate:before {
   content: "\e696";
 }
-.icon-sys-disk:before {
+.icon-price:before {
   content: "\e697";
 }
-.icon-iso-market:before {
+.icon-metering-billing:before {
   content: "\e698";
 }
-.icon-shelve:before {
+.icon-report-forms:before {
   content: "\e699";
 }
-.icon-iso-category:before {
+.icon-template:before {
   content: "\e69a";
 }
-.icon-app-market:before {
+.icon-assets-statement:before {
   content: "\e69b";
 }
-.icon-biaodanbiaoqian:before {
+.icon-data-disk:before {
   content: "\e69c";
 }
-.icon-sub-net:before {
+.icon-sys-disk:before {
   content: "\e69d";
 }
-.icon-outer-net:before {
+.icon-iso-market:before {
   content: "\e69e";
 }
-.icon-numa:before {
+.icon-shelve:before {
   content: "\e69f";
 }
-.icon-new-export:before {
+.icon-iso-category:before {
   content: "\e6a0";
 }
-.icon-workflow:before {
+.icon-app-market:before {
   content: "\e6a1";
 }
-.icon-new-import:before {
+.icon-biaodanbiaoqian:before {
   content: "\e6a2";
 }
-.icon-tag:before {
+.icon-sub-net:before {
   content: "\e6a3";
 }
-.icon-pci:before {
+.icon-outer-net:before {
   content: "\e6a4";
 }
-.icon-cost:before {
+.icon-numa:before {
   content: "\e6a5";
 }
-.icon-unread:before {
+.icon-new-export:before {
   content: "\e6a6";
 }
-.icon-clone:before {
+.icon-workflow:before {
   content: "\e6a7";
 }
-.icon-enter:before {
+.icon-new-import:before {
   content: "\e6a8";
 }
-.icon-subnet:before {
+.icon-tag:before {
   content: "\e6a9";
 }
-.icon-driverVersion:before {
+.icon-pci:before {
   content: "\e6aa";
 }
-.icon-organization-structure:before {
+.icon-cost:before {
   content: "\e6ab";
 }
-.icon-add-clouddisk:before {
+.icon-unread:before {
   content: "\e6ac";
 }
-.icon-vendorName:before {
+.icon-clone:before {
   content: "\e6ad";
 }
-.icon-totalCapacity:before {
+.icon-enter:before {
   content: "\e6ae";
 }
-.icon-fenqu:before {
+.icon-subnet:before {
   content: "\e6af";
 }
-.icon-allot-resource:before {
+.icon-driverVersion:before {
   content: "\e6b0";
 }
-.icon-add-rules:before {
+.icon-organization-structure:before {
   content: "\e6b1";
 }
-.icon-thinProvisioningSupport:before {
+.icon-add-clouddisk:before {
   content: "\e6b2";
 }
-.icon-provisionedCapacityGb:before {
+.icon-vendorName:before {
   content: "\e6b3";
 }
-.icon-oem:before {
+.icon-totalCapacity:before {
   content: "\e6b4";
 }
-.icon-skin:before {
+.icon-fenqu:before {
   content: "\e6b5";
 }
-.icon-jurassic_form-template:before {
+.icon-allot-resource:before {
   content: "\e6b6";
 }
-.icon-yingpan:before {
+.icon-add-rules:before {
   content: "\e6b7";
 }
-.icon-firefox:before {
+.icon-thinProvisioningSupport:before {
   content: "\e6b8";
 }
-.icon-filter:before {
+.icon-provisionedCapacityGb:before {
   content: "\e6b9";
 }
-.icon-enable:before {
+.icon-oem:before {
   content: "\e6ba";
 }
-.icon-disable:before {
+.icon-skin:before {
   content: "\e6bb";
 }
-.icon-network-config:before {
+.icon-jurassic_form-template:before {
   content: "\e6bc";
 }
-.icon-project:before {
+.icon-yingpan:before {
   content: "\e6bd";
 }
-.icon-import:before {
+.icon-firefox:before {
   content: "\e6be";
 }
-.icon-show:before {
+.icon-filter:before {
   content: "\e6bf";
 }
-.icon-information:before {
+.icon-enable:before {
   content: "\e6c0";
 }
-.icon-network-security-group-strategy:before {
+.icon-disable:before {
   content: "\e6c1";
 }
-.icon-change:before {
+.icon-network-config:before {
   content: "\e6c2";
 }
-.icon-migrate:before {
+.icon-project:before {
   content: "\e6c3";
 }
-.icon-safety-auth:before {
+.icon-import:before {
   content: "\e6c4";
 }
-.icon-ip:before {
+.icon-show:before {
   content: "\e6c5";
 }
-.icon-tag-o:before {
+.icon-information:before {
   content: "\e6c6";
 }
-.icon-zhuanshucunchu:before {
+.icon-network-security-group-strategy:before {
   content: "\e6c7";
 }
-.icon-mac:before {
+.icon-change:before {
   content: "\e6c8";
 }
-.icon-distribution:before {
+.icon-migrate:before {
   content: "\e6c9";
 }
-.icon-time:before {
+.icon-safety-auth:before {
   content: "\e6ca";
 }
-.icon-recovery:before {
+.icon-ip:before {
   content: "\e6cb";
 }
-.icon-maintain:before {
+.icon-tag-o:before {
   content: "\e6cc";
 }
-.icon-stop:before {
+.icon-zhuanshucunchu:before {
   content: "\e6cd";
 }
-.icon-unlink:before {
+.icon-mac:before {
   content: "\e6ce";
 }
-.icon-holding:before {
+.icon-distribution:before {
   content: "\e6cf";
 }
-.icon-restarting:before {
+.icon-time:before {
   content: "\e6d0";
 }
-.icon-coming-soon:before {
+.icon-recovery:before {
   content: "\e6d1";
 }
-.icon-compute:before {
+.icon-maintain:before {
   content: "\e6d2";
 }
-.icon-power-on:before {
+.icon-stop:before {
   content: "\e6d3";
 }
-.icon-power-off:before {
+.icon-unlink:before {
   content: "\e6d4";
 }
-.icon-user:before {
+.icon-holding:before {
   content: "\e6d5";
 }
-.icon-verification-code:before {
+.icon-restarting:before {
   content: "\e6d6";
 }
-.icon-password:before {
+.icon-coming-soon:before {
   content: "\e6d7";
 }
-.icon-home:before {
+.icon-compute:before {
   content: "\e6d8";
 }
-.icon-hide:before {
+.icon-power-on:before {
   content: "\e6d9";
 }
-.icon-success-o:before {
+.icon-power-off:before {
   content: "\e6da";
 }
-.icon-lock:before {
+.icon-user:before {
   content: "\e6db";
 }
-.icon-error-o:before {
+.icon-verification-code:before {
   content: "\e6dc";
 }
-.icon-cpu:before {
+.icon-password:before {
   content: "\e6dd";
 }
-.icon-telecontrol:before {
+.icon-home:before {
   content: "\e6de";
 }
-.icon-ram:before {
+.icon-hide:before {
   content: "\e6df";
 }
-.icon-qosSupport:before {
+.icon-success-o:before {
   content: "\e6e0";
 }
-.icon-question-o:before {
+.icon-lock:before {
   content: "\e6e1";
 }
-.icon-warning-o:before {
+.icon-error-o:before {
   content: "\e6e2";
 }
-.icon-snapshot:before {
+.icon-cpu:before {
   content: "\e6e3";
 }
-.icon-switches:before {
+.icon-telecontrol:before {
   content: "\e6e4";
 }
-.icon-upgrade:before {
+.icon-ram:before {
   content: "\e6e5";
 }
-.icon-gpu:before {
+.icon-qosSupport:before {
   content: "\e6e6";
 }
-.icon-info-o:before {
+.icon-question-o:before {
   content: "\e6e7";
 }
-.icon-network-card:before {
+.icon-warning-o:before {
   content: "\e6e8";
 }
-.icon-close:before {
+.icon-snapshot:before {
   content: "\e6e9";
 }
-.icon-quit:before {
+.icon-switches:before {
   content: "\e6ea";
 }
-.icon-update-password:before {
+.icon-upgrade:before {
   content: "\e6eb";
 }
-.icon-my-info:before {
+.icon-gpu:before {
   content: "\e6ec";
 }
-.icon-slef-info:before {
+.icon-info-o:before {
   content: "\e6ed";
 }
-.icon-patch:before {
+.icon-network-card:before {
   content: "\e6ee";
 }
-.icon-skin-line:before {
+.icon-close:before {
   content: "\e6ef";
 }
-.icon-safety-strategy:before {
+.icon-quit:before {
   content: "\e6f0";
 }
-.icon-network-safety:before {
+.icon-update-password:before {
   content: "\e6f1";
 }
-.icon-security:before {
+.icon-my-info:before {
   content: "\e6f2";
 }
-.icon-license:before {
+.icon-slef-info:before {
   content: "\e6f3";
 }
-.icon-system-manage:before {
+.icon-patch:before {
   content: "\e6f4";
 }
-.icon-log:before {
+.icon-skin-line:before {
   content: "\e6f5";
 }
-.icon-user-manage:before {
+.icon-safety-strategy:before {
   content: "\e6f6";
 }
-.icon-resource-drs:before {
+.icon-network-safety:before {
   content: "\e6f7";
 }
-.icon-recyle-set:before {
+.icon-security:before {
   content: "\e6f8";
 }
-.icon-region-vm:before {
+.icon-license:before {
   content: "\e6f9";
 }
-.icon-region-overview:before {
+.icon-system-manage:before {
   content: "\e6fa";
 }
-.icon-system-config:before {
+.icon-log:before {
   content: "\e6fb";
 }
-.icon-region-as:before {
+.icon-user-manage:before {
   content: "\e6fc";
 }
-.icon-region-set:before {
+.icon-resource-drs:before {
   content: "\e6fd";
 }
-.icon-alert-success:before {
+.icon-recyle-set:before {
   content: "\e6fe";
 }
-.icon-alert-rules:before {
+.icon-region-vm:before {
   content: "\e6ff";
 }
-.icon-alert-info:before {
+.icon-region-overview:before {
   content: "\e700";
 }
-.icon-guanli:before {
+.icon-system-config:before {
   content: "\e701";
 }
-.icon-alert-manage:before {
+.icon-region-as:before {
   content: "\e702";
 }
-.icon-monitor-service:before {
+.icon-region-set:before {
   content: "\e703";
 }
-.icon-chrome:before {
+.icon-alert-success:before {
   content: "\e704";
 }
-.icon-monitor-storage-pool:before {
+.icon-alert-rules:before {
   content: "\e705";
 }
-.icon-monitor-cloud:before {
+.icon-alert-info:before {
   content: "\e706";
 }
-.icon-monitor-overview:before {
+.icon-guanli:before {
   content: "\e707";
 }
-.icon-recyle:before {
+.icon-alert-manage:before {
   content: "\e708";
 }
-.icon-network-flow-mirror:before {
+.icon-monitor-service:before {
   content: "\e709";
 }
-.icon-network-qos:before {
+.icon-chrome:before {
   content: "\e70a";
 }
-.icon-network-security-group:before {
+.icon-monitor-storage-pool:before {
   content: "\e70b";
 }
-.icon-network-virutal:before {
+.icon-monitor-cloud:before {
   content: "\e70c";
 }
-.icon-network:before {
+.icon-monitor-overview:before {
   content: "\e70d";
 }
-.icon-storage-pool:before {
+.icon-recyle:before {
   content: "\e70e";
 }
-.icon-storage:before {
+.icon-network-flow-mirror:before {
   content: "\e70f";
 }
-.icon-host1:before {
+.icon-network-qos:before {
   content: "\e710";
 }
-.icon-compute-template:before {
+.icon-network-security-group:before {
   content: "\e711";
 }
-.icon-guanlizhongxin1:before {
+.icon-network-virutal:before {
   content: "\e712";
 }
-.icon-guanlizhongxin11:before {
+.icon-network:before {
   content: "\e713";
 }
-.icon-compute-ssh:before {
+.icon-storage-pool:before {
   content: "\e714";
 }
-.icon-compute-mirror:before {
+.icon-storage:before {
   content: "\e715";
 }
-.icon-boot-sources:before {
+.icon-host1:before {
   content: "\e716";
 }
-.icon-compute-cloud:before {
+.icon-compute-template:before {
   content: "\e717";
 }
-.icon-resource-manage:before {
+.icon-guanlizhongxin1:before {
   content: "\e718";
 }
-.icon-large-screen-monitor:before {
+.icon-guanlizhongxin11:before {
   content: "\e719";
 }
-.icon-system-overview:before {
+.icon-compute-ssh:before {
   content: "\e71a";
 }
-.icon-enter-right:before {
+.icon-compute-mirror:before {
   content: "\e71b";
+}
+.icon-boot-sources:before {
+  content: "\e71c";
+}
+.icon-compute-cloud:before {
+  content: "\e71d";
+}
+.icon-resource-manage:before {
+  content: "\e71e";
+}
+.icon-large-screen-monitor:before {
+  content: "\e71f";
+}
+.icon-system-overview:before {
+  content: "\e720";
+}
+.icon-enter-right:before {
+  content: "\e721";
 }
 .icon-snapshot-support:before {
   content: "\e722";
@@ -1105,6 +1126,9 @@
 .icon-nat:before {
   content: "\e8b1";
 }
+.icon-guanxitu11:before {
+  content: "\e8bc";
+}
 .icon-monitor-manage:before {
   content: "\e8c1";
 }
@@ -1122,6 +1146,9 @@
 }
 .icon-specifications:before {
   content: "\e9fa";
+}
+.icon-move-full1:before {
+  content: "\ea58";
 }
 .icon-restart:before {
   content: "\ea5b";

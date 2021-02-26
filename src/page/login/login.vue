@@ -103,7 +103,7 @@ export default {
           that.$store.dispatch('login', that.loginForm)
             .then(res => {
               if (res.status === 200 && res.data) {
-                that.$router.push('/serviceGovernance')
+                that.$router.push('/gateway')
               } else {
                 that.$message({
                   type: 'error',

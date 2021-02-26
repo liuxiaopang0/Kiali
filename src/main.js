@@ -20,10 +20,8 @@ import publicPlugin from '~/plugin'
 import VueClipboard from 'vue-clipboard2'
 import infiniteScroll from 'vue-infinite-scroll'
 import cytoscape from 'cytoscape'
-const nodeHtmlLabel = require('cy-node-html-label')
 
 Vue.prototype.$cytoscape = cytoscape
-nodeHtmlLabel(cytoscape)
 
 Vue.use(infiniteScroll)
 Vue.use(VueClipboard)

@@ -5,7 +5,7 @@
         <i class="shu"></i>
         <span style="margin-left:5px;font-weight:bolder" v-if="!bread">{{title}}</span>
         <el-breadcrumb separator="/" v-else style="margin-left:8px;font-size:12px">
-          <el-breadcrumb-item v-for="(item,index) in bread" @click.native="breadClick(item,index)" :key="index" :to="{ path: item.href}">{{item.name}}</el-breadcrumb-item>
+          <el-breadcrumb-item v-for="(item,index) in bread" :key="index" :to="{ path: item.href}">{{item.name}}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
      <div style="font-size:12px;">
@@ -116,8 +116,8 @@ export default {
       this.$router.push(this.back)
     },
     breadClick(item, index) {
-      this.$store.commit('set_active_breadcrumb', item.href)
-      this.$emit('isClick', item.href)
+      // this.$store.commit('set_active_breadcrumb', item.href)
+      // this.$emit('isClick', item.href)
     },
     cluster_change() {
       store.commit('set_cluster_name', this.cluster_name)

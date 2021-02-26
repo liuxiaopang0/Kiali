@@ -162,14 +162,26 @@ export default {
                 _this.current_index = ele.index
               } else if (ele.index !== path && ele.children) {
                 ele.children.forEach((element, ind) => {
-                  if (element.index === path) {
+                  let pat = ''
+                  if (_this.$route.params.id && _this.$route.params.name) {
+                    pat = path.split(_this.$route.params.id)[0] + ':id/:name'
+                  } else {
+                    pat = path
+                  }
+                  if (pat === element.index) {
                     _this.current_group = item
                     _this.is_group = item
                     _this.current_route = element
                     if (!item.open) {
                       _this.change_nav(item, index, 'group')
                     }
-                    _this.change_nav(element, inde, 'child', item)
+                    if (_this.$route.params.id && _this.$route.params.name) {
+                      pat = path.split(_this.$route.params.id)[0] + ':id/:name'
+                      _this.change_nav({ ...element, index: path }, inde, 'child', item)
+                    } else {
+                      pat = path
+                      _this.change_nav(element, inde, 'child', item)
+                    }
                     _this.current_index = ele.index
                   }
                 })
