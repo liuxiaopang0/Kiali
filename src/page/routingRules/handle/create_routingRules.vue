@@ -372,7 +372,6 @@ export default {
     //     // }
     //     })
     //     if (ll !== 100) this.form_msg.dotOptions.push({ disabled: true })
-    //     console.log(this.form_msg.dotOptions, this.form_msg.configurationValue)
     //   },
     //   deep: true
     // }
@@ -389,7 +388,6 @@ export default {
       routingRulesHttp.get_services_detail(services.split(',')[1]).then(res => {
         if (res.status_code === 1) {
           that.form_msg.items[parent].serviceWeights[index].portItems = res.content.servicePortEntities.length ? res.content.servicePortEntities : []
-          console.log(that.form_msg.items[parent].serviceWeights[index].portItems, ' that.form_msg.items[parent].serviceWeights[index].portItems')
           if (!res.content.servicePortEntities.length) {
             that.$message({
               message: '本服务没有端口，请选择别的服务',

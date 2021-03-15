@@ -18,10 +18,10 @@ Vue.use(Router)
 
 const router = new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   redirect: '/index'
-    // },
+    {
+      path: '/',
+      redirect: '/gateway'
+    },
     {
       path: '/login',
       name: 'login',
@@ -88,9 +88,8 @@ router.beforeEach((to, from, next) => {
   }
   if (localStorage.getItem('token')) {
     if (to.matched.length === 0) { // 如果未匹配到路由
-      from.path ? next({ path: from.path }) : next('/') // 如果上级也未匹配到路由则跳转主页面，如果上级能匹配到则转上级路由
+      from.path ? next({ path: from.path }) : next('/gateway') // 如果上级也未匹配到路由则跳转主页面，如果上级能匹配到则转上级路由
     } else {
-      console.log('232')
       next() // 如果匹配到正确跳转
     }
   } else {

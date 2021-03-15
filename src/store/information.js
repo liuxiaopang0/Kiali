@@ -18,9 +18,6 @@ export const InformationModule = {
     },
     set_namespaceItems(state, data) {
       state.namespaceItems = data
-    },
-    set_graph_type(state, data) {
-      state.graph_type = data
     }
   },
   actions: {},

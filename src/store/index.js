@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import { UserModule } from './user'
 import { MenuModule } from './menu'
 import { InformationModule } from './information'
+import { GovernanceTopology } from './governanceTopology'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -13,7 +14,8 @@ const store = new Vuex.Store({
   modules: {
     user: UserModule,
     menu: MenuModule,
-    information: InformationModule
+    information: InformationModule,
+    governanceTopology: GovernanceTopology
   }
 })
 

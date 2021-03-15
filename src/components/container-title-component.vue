@@ -17,10 +17,10 @@
         <el-select v-model="namespace" placeholder="所属分区" @change="namespace_change" style="margin-left: 8px" v-if="namespaceFlag">
           <el-option :label="item.name" :value="item.name" v-for="(item,index) in namespaceItems" :key="index"></el-option>
         </el-select>
-        <span style="margin-left:10px" v-if="graphTypeFlag">图形类型</span>
+        <!-- <span style="margin-left:10px" v-if="graphTypeFlag">图形类型</span>
         <el-select v-model="graph_type" placeholder="图形类型" @change="graphType_change" style="margin-left: 8px" v-if="graphTypeFlag">
           <el-option :label="item.lable" :value="item.value" v-for="(item,index) in graphTypeList" :key="index"></el-option>
-        </el-select>
+        </el-select> -->
       </div>
     </div>
   </div>
@@ -43,11 +43,11 @@ export default {
     return {
       namespaceItems: [],
       namespace: '',
-      namespaceFlag: true,
+      // namespaceFlag: true,
 
       clusterActiveList: [],
       cluster_name: '',
-      clusterFlag: true,
+      // clusterFlag: true,
 
       graphTypeList: [
         {
@@ -67,12 +67,26 @@ export default {
           value: 'workload'
         }
       ],
-      graph_type: 'app'
+      graph_type: 'versionedApp'
     }
   },
   computed: {
     graphTypeFlag() {
       if (this.$route.name === 'GovernanceTopology') {
+        return true
+      } else {
+        return false
+      }
+    },
+    clusterFlag() {
+      if (this.$route.name === 'RoutingRules' || this.$route.name === 'Gateway') {
+        return true
+      } else {
+        return false
+      }
+    },
+    namespaceFlag() {
+      if (this.$route.name === 'RoutingRules' || this.$route.name === 'Gateway') {
         return true
       } else {
         return false

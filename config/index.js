@@ -18,6 +18,13 @@ module.exports = {
           '^/api': ''
         }
       },
+      '/cy': {
+        target: 'http://10.0.100.55:30003/kiali',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/cy': ''
+        }
+      },
       timeout: 1000 * 60 * 30
     },
 
